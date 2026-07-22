@@ -5,12 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>internet moments x micro apps</title>
 <style>
-  :root { color-scheme: light; }
+  :root {
+    color-scheme: light;
+    /* Shelf brand palette */
+    --ink: #0F0F0F;
+    --paper: #FAF6EE;         /* warm cream page bg */
+    --card: #FFFFFF;
+    --muted: #8B8B85;         /* warm gray */
+    --line: #EFE9DA;          /* warm border */
+    --line-soft: #F6F1E4;
+
+    /* Pastels — main tones */
+    --pink-soft: #FCE3EF;
+    --peri-soft: #DCE1FA;
+    --lime-soft: #ECF7C6;
+    --peach-soft: #FBE0D2;
+    --yellow-soft: #FBF1CC;
+
+    /* Vivid — highlights */
+    --pink: #F26FBB;
+    --peri: #8B99F0;
+    --lime: #C2F14E;
+    --coral: #EE4A2A;
+    --yellow: #F1C22E;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    background: #f5f5f5;
-    color: #000;
+    background: var(--paper);
+    color: var(--ink);
     display: flex;
     justify-content: center;
     padding: 16px 0 80px;
@@ -20,40 +43,50 @@
   .app {
     width: 100%;
     max-width: 680px;
-    background: #fff;
+    background: var(--card);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    box-shadow: 0 2px 12px rgba(15, 15, 15, 0.05);
   }
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--line);
     position: sticky;
     top: 0;
-    background: #fff;
+    background: var(--card);
     z-index: 10;
   }
   .header h1 {
     font-size: 17px;
     font-weight: 700;
     letter-spacing: -0.2px;
+    color: var(--ink);
   }
   .header .count {
     font-size: 13px;
-    color: #999;
+    color: var(--muted);
     font-weight: 500;
   }
 
-  /* Micro-app filter tabs — sticky below header */
+  /* Shelf wordmark logo in header top-right */
+  .header-logo {
+    height: 22px;
+    width: auto;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Micro-app filter tabs — sticky below header. Each app has a signature pastel + vivid. */
   .tabs {
     display: flex;
     gap: 6px;
     padding: 10px 20px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
     overflow-x: auto;
     scrollbar-width: none;
     position: sticky;
@@ -65,36 +98,122 @@
     flex-shrink: 0;
     padding: 6px 14px;
     border-radius: 16px;
-    background: #f0f0f0;
-    color: #555;
+    background: var(--line-soft);
+    color: var(--ink);
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: background 0.1s, color 0.1s;
+    transition: background 0.15s, color 0.15s, transform 0.05s;
     white-space: nowrap;
     font-family: inherit;
   }
-  .tab:hover { background: #e5e5e5; color: #000; }
-  .tab.active {
-    background: #000;
-    color: #fff;
-  }
-  .tab.active:hover { background: #000; color: #fff; }
+  .tab:hover { background: var(--line); }
+  .tab:active { transform: scale(0.97); }
   .tab .tab-count {
     opacity: 0.55;
     margin-left: 4px;
-    font-weight: 400;
+    font-weight: 500;
   }
-  .tab.active .tab-count { opacity: 0.75; }
+  .tab.active .tab-count { opacity: 0.8; }
+
+  /* Signature colors per micro-app */
+  .tab[data-key="Celeb Soulmate"] { background: var(--pink-soft); color: #A63587; }
+  .tab[data-key="Celeb Soulmate"]:hover { background: #F9CFE4; }
+  .tab[data-key="Celeb Soulmate"].active { background: var(--pink); color: #fff; }
+  .tab[data-key="Celeb Soulmate"].active:hover { background: #EE5EB0; }
+
+  .tab[data-key="Heartstopper Match"] { background: var(--peri-soft); color: #4557C4; }
+  .tab[data-key="Heartstopper Match"]:hover { background: #CBD3F7; }
+  .tab[data-key="Heartstopper Match"].active { background: var(--peri); color: #fff; }
+  .tab[data-key="Heartstopper Match"].active:hover { background: #7987EC; }
+
+  .tab[data-key="iPod Top Song"] { background: var(--lime-soft); color: #5D7A0E; }
+  .tab[data-key="iPod Top Song"]:hover { background: #E1F3B0; }
+  .tab[data-key="iPod Top Song"].active { background: var(--lime); color: var(--ink); }
+  .tab[data-key="iPod Top Song"].active:hover { background: #B4EA35; }
+
+  .tab[data-key="all"].active { background: var(--ink); color: #fff; }
+  .tab[data-key="all"].active:hover { background: #000; }
 
   .feed { padding: 0; }
+
+  /* Trend cards — shown when All tab is active and no trend drilled in */
+  .trend-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line-soft);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .trend-card:hover { background: #FEF9F3; }
+  .trend-body { flex: 1; min-width: 0; }
+  .trend-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.15px;
+    margin-bottom: 4px;
+  }
+  .trend-meta {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .trend-apps {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .trend-app-chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+  }
+  .trend-app-chip[data-app="Celeb Soulmate"] { background: var(--pink-soft); color: #A63587; }
+  .trend-app-chip[data-app="Heartstopper Match"] { background: var(--peri-soft); color: #4557C4; }
+  .trend-app-chip[data-app="iPod Top Song"] { background: var(--lime-soft); color: #5D7A0E; }
+  .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
+
+  .trend-chevron {
+    color: #D5CFC0;
+    font-size: 22px;
+    line-height: 1;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Back to trends button */
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid var(--line-soft);
+    transition: color 0.15s, background 0.15s;
+  }
+  .back-btn:hover { background: #FEF9F3; color: var(--ink); }
+  .back-btn svg { width: 16px; height: 16px; stroke-width: 2; }
+  .back-btn .trend-context { color: var(--ink); font-weight: 700; margin-left: 6px; }
 
   .post {
     display: flex;
     gap: 12px;
     padding: 16px 20px 12px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--line-soft);
     position: relative;
   }
   .thread-line {
@@ -103,14 +222,14 @@
     top: 60px;
     bottom: 12px;
     width: 2px;
-    background: #e5e5e5;
+    background: var(--line);
     border-radius: 1px;
   }
   .avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ffb199, #ff6a88);
+    background: linear-gradient(135deg, var(--peach-soft), var(--pink));
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -119,6 +238,7 @@
     font-weight: 700;
     font-size: 14px;
     z-index: 1;
+    box-shadow: 0 1px 3px rgba(242, 111, 187, 0.25);
   }
   .post-body { flex: 1; min-width: 0; }
 
@@ -129,28 +249,28 @@
     margin-bottom: 4px;
   }
   .post-header .handle {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 15px;
-    color: #000;
+    color: var(--ink);
   }
   .post-header .time {
-    color: #999;
+    color: var(--muted);
     font-size: 14px;
     margin-left: 6px;
   }
   .post-header .counter {
     margin-left: auto;
-    font-size: 13px;
-    color: #666;
-    background: #f3f3f3;
+    font-size: 12px;
+    color: #4557C4;
+    background: var(--peri-soft);
     border-radius: 12px;
-    padding: 2px 9px;
-    font-weight: 500;
+    padding: 3px 10px;
+    font-weight: 700;
     min-width: 36px;
     text-align: center;
   }
   .post-header .more {
-    color: #999;
+    color: #C4BEB0;
     font-size: 20px;
     padding: 0 4px 0 8px;
     cursor: pointer;
@@ -162,31 +282,31 @@
 
   .caption {
     font-size: 15px;
-    line-height: 1.4;
+    line-height: 1.45;
     white-space: pre-wrap;
     word-wrap: break-word;
     margin-bottom: 10px;
-    color: #000;
+    color: var(--ink);
   }
 
   .source-chip {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 2px 9px 2px 7px;
-    background: #f3f3f3;
+    padding: 3px 10px 3px 8px;
+    background: var(--peach-soft);
     border-radius: 12px;
     font-size: 12px;
-    color: #555;
+    color: #B84A1F;
     text-decoration: none;
-    font-weight: 500;
-    transition: background 0.1s;
+    font-weight: 700;
+    transition: background 0.15s, color 0.15s;
     white-space: nowrap;
     margin-left: 2px;
   }
-  .source-chip:hover { background: #e5e5e5; color: #000; }
-  .source-chip svg { width: 11px; height: 11px; stroke-width: 2.2; color: #777; flex-shrink: 0; }
-  .source-chip:hover svg { color: #000; }
+  .source-chip:hover { background: #F9CFB3; color: #8F3812; }
+  .source-chip svg { width: 11px; height: 11px; stroke-width: 2.4; color: #B84A1F; flex-shrink: 0; }
+  .source-chip:hover svg { color: #8F3812; }
 
   /* Threads-native carousel: fixed height, natural aspect widths, next slide peeks */
   .carousel {
@@ -211,7 +331,7 @@
     max-width: calc(100% - 60px);
     border-radius: 14px;
     overflow: hidden;
-    background: #f0f0f0;
+    background: var(--line-soft);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -230,17 +350,17 @@
 
   /* Placeholder slide — dashed card describing image that goes here */
   .carousel-slide.placeholder {
-    background: #fafafa;
-    border: 2px dashed #d0d0d0;
+    background: #FEF9F3;
+    border: 2px dashed var(--pink);
     padding: 24px 20px;
     width: 260px;
     flex-direction: column;
     text-align: center;
-    color: #666;
+    color: var(--muted);
   }
   .carousel-slide.placeholder .ph-icon {
     font-size: 34px;
-    opacity: 0.55;
+    opacity: 0.75;
     margin-bottom: 14px;
     line-height: 1;
   }
@@ -248,14 +368,14 @@
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: #999;
+    letter-spacing: 0.8px;
+    color: var(--pink);
     margin-bottom: 10px;
   }
   .carousel-slide.placeholder .ph-body {
     font-size: 14px;
     line-height: 1.45;
-    color: #333;
+    color: var(--ink);
     max-width: 220px;
   }
 
@@ -263,7 +383,7 @@
     display: flex;
     gap: 2px;
     margin-top: 6px;
-    color: #666;
+    color: var(--muted);
   }
   .action {
     display: inline-flex;
@@ -273,26 +393,31 @@
     border-radius: 20px;
     cursor: pointer;
     font-size: 13px;
-    color: #666;
+    color: var(--muted);
     user-select: none;
-    transition: background 0.1s;
+    transition: background 0.15s, color 0.15s;
   }
-  .action:hover { background: #f5f5f5; }
+  .action:hover { background: var(--pink-soft); color: var(--pink); }
+  .action:hover:nth-child(2) { background: var(--peri-soft); color: var(--peri); }
+  .action:hover:nth-child(3) { background: var(--lime-soft); color: #5D7A0E; }
+  .action:hover:nth-child(4) { background: var(--peach-soft); color: var(--coral); }
   .action svg { width: 20px; height: 20px; stroke-width: 1.6; }
 
   .empty {
     padding: 80px 24px;
     text-align: center;
-    color: #666;
+    color: var(--muted);
   }
-  .empty .emoji { font-size: 48px; margin-bottom: 16px; opacity: 0.6; }
-  .empty h2 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #000; }
+  .empty .emoji { font-size: 48px; margin-bottom: 16px; opacity: 0.85; }
+  .empty h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
   .empty p { font-size: 14px; line-height: 1.5; max-width: 340px; margin: 0 auto; }
   .empty code {
-    background: #f0f0f0;
-    padding: 2px 6px;
-    border-radius: 4px;
+    background: var(--pink-soft);
+    color: var(--pink);
+    padding: 2px 8px;
+    border-radius: 6px;
     font-size: 13px;
+    font-weight: 600;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 </style>
@@ -301,7 +426,7 @@
   <div class="app">
     <div class="header">
       <h1>internet moments x micro apps</h1>
-      <span class="count" id="count">0 posts</span>
+      <img class="header-logo" src="data:image/png;base64,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" alt="Shelf" />
     </div>
     <div class="tabs" id="tabs"></div>
     <div class="feed" id="feed"></div>
@@ -313,7 +438,31 @@
     "handle": "emily",
     "time": "now",
     "microApp": "Celeb Soulmate",
-    "caption": "Damn, what the hell is this look, it's so damn hot 🔥🔥🔥\nit looks so western but how is it gyaru style\n\ni've been thinking about it all day\n\nand then Spotify + Netflix dropped a new quiz that cross-references your Spotify plays with your Netflix watches to pick the celebrity you're most compatible with — turns out my taste has been telling on me",
+    "trend": "NewJeans comeback",
+    "caption": "New Jeans is finally back OMG. After 2 years & 4 months, the 4 queens has come back to take their own thrones\n\nAt the same time, Spotify also just released a new quiz that reveals the celeb you should date. Mine is [a NewJeans member]",
+    "source": {
+      "handle": "@dongho_25",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@dongho_25/post/DbDzjStgjfq?xmt=AQG007mqcCQmYBPATC8J2v-ZssCTH2mUp_Ti709cLPepYw"
+    },
+    "images": [
+      {
+        "placeholder": "NewJeans comeback visual — album art, MV still, or group promo photo (the 4 members)"
+      },
+      {
+        "placeholder": "Shelf's Celeb Soulmate result screen — the NewJeans member as the soulmate reveal"
+      },
+      {
+        "placeholder": "Loading screen — \"Matching your streaming DNA…\""
+      }
+    ]
+  },
+  {
+    "handle": "emily",
+    "time": "20m",
+    "microApp": "Celeb Soulmate",
+    "trend": "Ningning's viral new look",
+    "caption": "Damn, Ningning's new look is so damn hot 🔥🔥🔥 It looks so western & gyaru at the same time!!!\n\ni've been thinking about it all day...\n\nand then Spotify + Netflix dropped a new quiz that cross-references your Spotify plays with your Netflix watches to pick the celebrity you're most compatible with - turns out my taste has been telling on me",
     "source": {
       "handle": "@wiipel_",
       "platform": "Threads",
@@ -333,8 +482,9 @@
   },
   {
     "handle": "emily",
-    "time": "1h",
+    "time": "2h",
     "microApp": "Celeb Soulmate",
+    "trend": "Taehyung's new TikTok dance",
     "caption": "OMG TAEHYUNG POSTED NEW DANCE VIDEO ON TIKTOK!\nHE'S THE COOLEST\nTHIS PART 🫨\n\nalso Spotify + Netflix have a new quiz that takes your Spotify + Netflix history and figures out which celebrity is actually your soulmate.\n\nguess who i got",
     "source": {
       "handle": "@taekookhaze_",
@@ -355,8 +505,9 @@
   },
   {
     "handle": "emily",
-    "time": "2h",
+    "time": "3h",
     "microApp": "iPod Top Song",
+    "trend": "Gracie Abrams new album",
     "caption": "anyone here who listens to gracie abrams? i don't have anyone to talk to about the new album\n\nso instead i'm posting my top song of the week from spotify's new feature that pulls your most-played song from the last 7 days and renders it on a classic iPod display\n\nit's on repeat, obviously",
     "source": {
       "handle": "@froyeeeee",
@@ -377,8 +528,9 @@
   },
   {
     "handle": "emily",
-    "time": "3h",
+    "time": "4h",
     "microApp": "Heartstopper Match",
+    "trend": "Heartstopper Forever finale",
     "caption": "attraction is subjective. Just bc u don't find Charlie attractive doesn't mean Nick can't.\nThat's literally how attraction works.\n\nwhich is exactly why everyone i know got a different result from Netflix's new quiz that pulls your Heartstopper watch stats and pairs you with the character you're closest to",
     "source": {
       "handle": "@drukavi",
@@ -399,8 +551,9 @@
   },
   {
     "handle": "emily",
-    "time": "3h",
+    "time": "4h",
     "microApp": "Heartstopper Match",
+    "trend": "Heartstopper Forever finale",
     "caption": "Me: would happily sit through 1 hour of slow-mo spicy Heated Rivalry scenes, no blinking\n\nAlso me watching Heartstopper Forever: um, sorry guys… this feels private. Imma watch through my hands and give you some privacy now, okay? Okay\n\nNetflix: fine, if you can't watch them we'll match you with them — new quiz that reads how you've watched Heartstopper and tells you which one you actually are",
     "source": {
       "handle": "@un.amonite",
@@ -421,8 +574,9 @@
   },
   {
     "handle": "emily",
-    "time": "3h",
+    "time": "4h",
     "microApp": "Heartstopper Match",
+    "trend": "Heartstopper Forever finale",
     "caption": "This is the LGBTQIA+ show we all WISH WE HAD GROWING UP. 🍂\n\nwhich is why Netflix's new quiz that cross-checks your Heartstopper viewing patterns and matches you with a character kind of hits like a portal\n\nif we couldn't be them at 14, at least we get to know which one we are now",
     "source": {
       "handle": "@logan_allison_",
@@ -443,8 +597,9 @@
   },
   {
     "handle": "emily",
-    "time": "6h",
+    "time": "7h",
     "microApp": "Heartstopper Match",
+    "trend": "Heartstopper Forever finale",
     "caption": "all of us this week: \"Heartstopper Forever will always hold the most special place in my heart\" 🩵💛\n\nNetflix: come here, we made a quiz that takes your Heartstopper viewing history and picks which character fits you\n\nme:",
     "source": {
       "handle": "@booknerd_charlie",
@@ -469,6 +624,7 @@
   const countEl = document.getElementById('count');
   const tabsEl = document.getElementById('tabs');
   let activeFilter = 'all';
+  let activeTrend = null;  // set when drilled into a specific trend from All tab
 
   function iconHeart() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'; }
   function iconComment() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>'; }
@@ -566,25 +722,102 @@
     tabsEl.querySelectorAll('.tab').forEach(el => {
       el.addEventListener('click', () => {
         activeFilter = el.dataset.key;
+        activeTrend = null;  // switching tabs clears any drilled-in trend
         renderTabs();
         render();
       });
     });
   }
 
+  function renderTrendList() {
+    // Group posts by trend, preserve first-seen order (matches how posts array is ordered — newest first)
+    const trendMap = new Map();
+    posts.forEach(p => {
+      const t = p.trend || 'Uncategorized';
+      if (!trendMap.has(t)) {
+        trendMap.set(t, { name: t, posts: [], apps: new Set() });
+      }
+      const entry = trendMap.get(t);
+      entry.posts.push(p);
+      if (p.microApp) entry.apps.add(p.microApp);
+    });
+
+    const trends = Array.from(trendMap.values());
+    return trends.map(t => `
+      <div class="trend-card" data-trend="${escapeHtml(t.name)}">
+        <div class="trend-body">
+          <div class="trend-title">${escapeHtml(t.name)}</div>
+          <div class="trend-meta">${t.posts.length} ${t.posts.length === 1 ? 'post' : 'posts'}</div>
+          <div class="trend-apps">
+            ${Array.from(t.apps).map(a => `<span class="trend-app-chip" data-app="${escapeHtml(a)}">${escapeHtml(a)}</span>`).join('')}
+          </div>
+        </div>
+        <div class="trend-chevron">›</div>
+      </div>
+    `).join('');
+  }
+
+  function renderBackBtn() {
+    return `
+      <button class="back-btn" id="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        All trends<span class="trend-context">/ ${escapeHtml(activeTrend)}</span>
+      </button>
+    `;
+  }
+
+  function wireTrendCards() {
+    document.querySelectorAll('.trend-card').forEach(el => {
+      el.addEventListener('click', () => {
+        activeTrend = el.dataset.trend;
+        render();
+      });
+    });
+    const back = document.getElementById('back-btn');
+    if (back) {
+      back.addEventListener('click', () => {
+        activeTrend = null;
+        render();
+      });
+    }
+  }
+
   function render() {
     renderTabs();
-    const filtered = activeFilter === 'all'
-      ? posts
-      : posts.filter(p => (p.microApp || 'Other') === activeFilter);
-    if (!filtered.length) {
-      feed.innerHTML = renderEmpty();
-      countEl.textContent = '0 posts';
+
+    // All tab, no trend drilled → show trend cards
+    if (activeFilter === 'all' && !activeTrend) {
+      if (!posts.length) {
+        feed.innerHTML = renderEmpty();
+        if (countEl) countEl.textContent = '0 posts';
+        return;
+      }
+      const trendCount = new Set(posts.map(p => p.trend || 'Uncategorized')).size;
+      feed.innerHTML = renderTrendList();
+      if (countEl) countEl.textContent = trendCount === 1 ? '1 trend' : trendCount + ' trends';
+      wireTrendCards();
       return;
     }
-    feed.innerHTML = filtered.map(renderPost).join('');
-    countEl.textContent = filtered.length === 1 ? '1 post' : filtered.length + ' posts';
+
+    // Otherwise show filtered posts (by micro-app OR by drilled trend)
+    let filtered;
+    if (activeFilter === 'all' && activeTrend) {
+      filtered = posts.filter(p => (p.trend || 'Uncategorized') === activeTrend);
+    } else {
+      filtered = posts.filter(p => (p.microApp || 'Other') === activeFilter);
+    }
+
+    if (!filtered.length) {
+      feed.innerHTML = renderEmpty();
+      if (countEl) countEl.textContent = '0 posts';
+      return;
+    }
+
+    const backHtml = activeTrend ? renderBackBtn() : '';
+    feed.innerHTML = backHtml + filtered.map(renderPost).join('');
+    if (countEl) countEl.textContent = filtered.length === 1 ? '1 post' : filtered.length + ' posts';
     wireCarousels();
+    wireTrendCards();  // wires the back button
   }
 
   function wireCarousels() {
