@@ -21,6 +21,7 @@
     --lime-soft: #ECF7C6;
     --peach-soft: #FBE0D2;
     --yellow-soft: #FBF1CC;
+    --mint-soft: #A6DEBB;
 
     /* Vivid — highlights */
     --pink: #F26FBB;
@@ -28,6 +29,7 @@
     --lime: #C2F14E;
     --coral: #EE4A2A;
     --yellow: #F1C22E;
+    --green: #22B24C;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -133,6 +135,11 @@
   .tab[data-key="iPod Top Song"].active { background: var(--lime); color: var(--ink); }
   .tab[data-key="iPod Top Song"].active:hover { background: #B4EA35; }
 
+  .tab[data-key="What's In My Bag"] { background: var(--yellow-soft); color: #7A5A0F; }
+  .tab[data-key="What's In My Bag"]:hover { background: #F7E8A5; }
+  .tab[data-key="What's In My Bag"].active { background: var(--yellow); color: var(--ink); }
+  .tab[data-key="What's In My Bag"].active:hover { background: #E5B21A; }
+
   .tab[data-key="all"].active { background: var(--ink); color: #fff; }
   .tab[data-key="all"].active:hover { background: #000; }
 
@@ -199,6 +206,7 @@
   .trend-app-chip[data-app="Celeb Soulmate"] { background: var(--pink-soft); color: #A63587; }
   .trend-app-chip[data-app="Heartstopper Match"] { background: var(--peri-soft); color: #4557C4; }
   .trend-app-chip[data-app="iPod Top Song"] { background: var(--lime-soft); color: #5D7A0E; }
+  .trend-app-chip[data-app="What's In My Bag"] { background: var(--yellow-soft); color: #7A5A0F; }
   .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
 
   .trend-chevron {
@@ -462,6 +470,52 @@
   {
     "handle": "Shelf Radar",
     "time": "now",
+    "microApp": "Celeb Soulmate",
+    "trend": "Jennie Blackpink's new album",
+    "caption": "WRITTEN BY JENNIE, DIRECTED BY JENNIE, MUSIC BY JENNIE.\n\n'LESS THAN A LOVER' is coming at the same time Spotify drops this soulmate quiz based on your music taste.\n\nIT MATCHES ME WITH JENNIE OMG",
+    "source": {
+      "handle": "@pinksview",
+      "platform": "X",
+      "url": "https://x.com/pinksview/status/2078860981967765802?s=46"
+    },
+    "images": [
+      {
+        "placeholder": "The 'Less Than a Lover' announcement visual — Jennie's teaser graphic with the 'Written by/Directed by/Music by Jennie' text"
+      },
+      {
+        "placeholder": "Shelf's Celeb Soulmate result screen — Jennie as the soulmate reveal"
+      },
+      {
+        "placeholder": "Loading screen — \"Matching your streaming DNA…\" or similar"
+      }
+    ]
+  },
+  {
+    "handle": "Shelf Radar",
+    "time": "30m",
+    "microApp": "What's In My Bag",
+    "trend": "Jennie Blackpink's new album",
+    "caption": "she's wearing Jade Earings what if the album's called Jade\n\nanyway Spotify + Netflix launched a new test that reads your streaming DNA and shows you what's in your bag\n\nmine already has jade earrings in it",
+    "source": {
+      "handle": "@nieedlau_",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@nieedlau_/post/DbGJu-CE8c0?xmt=AQG0Lf0YOpqO5vwoKCX7Bn1RDq0D2-9ZIDp1Qg9b7CthFhgsGxr4eA12jESzLMqEooNcgSKx&slof=1"
+    },
+    "images": [
+      {
+        "placeholder": "The original Threads photo — Jennie wearing the jade earrings that sparked the album-name speculation"
+      },
+      {
+        "placeholder": "Shelf's What's In My Bag result screen, AI-modified: swap earrings in the bag for jade earrings + replace the albums/songs with Jennie's discography"
+      },
+      {
+        "placeholder": "Loading screen — \"Reading your streaming DNA…\""
+      }
+    ]
+  },
+  {
+    "handle": "Shelf Radar",
+    "time": "1h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "Shows like Heartstopper, Young Royals, and Heated Rivalry are so important in the media we need more queer love stories\nAnd we need for wlw love stories\n\nin the meantime, Netflix has a new quiz that reads your Heartstopper watch history and gives you the character closest to who you are",
@@ -484,7 +538,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "30m",
+    "time": "2h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "Me: \"I watch Heartstopper for the plot.\"\nThe plot:\n(via Netflix's Heartstopper Match quiz omg i really can't get away with this)",
@@ -507,7 +561,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "1h",
+    "time": "3h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "\"I love charlie and nick.. but elle genuinely has my whole heart. elle and tao. 🥺❤️\"\n\n— me, every time i finish a season\n\nNetflix (probably reading my Heartstopper viewing history through their new character-match quiz): here's who you actually are",
@@ -530,7 +584,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "2h",
+    "time": "4h",
     "microApp": "iPod Top Song",
     "trend": "Gracie Abrams new album",
     "caption": "as an eldest daughter we are getting absolutely wrecked this summer between Noah, Olivia and Gracie\n\nand Spotify has a new feature that puts your top song of the week on an old iPod screen — mine confirms exactly which one is doing the most damage",
@@ -553,7 +607,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "3h",
+    "time": "5h",
     "microApp": "iPod Top Song",
     "trend": "Gracie Abrams new album",
     "caption": "I love Gracie but her new album Daughter from Hell did not click the way The Secret of Us did.\n\nOr maybe I'm just stuck with Olivia's album (told by Spotify's iPod top song report) that I can't seem to appreciate other songs right now.\n\nAnyone feels the same?",
@@ -576,7 +630,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "4h",
+    "time": "6h",
     "microApp": "Celeb Soulmate",
     "trend": "NewJeans comeback",
     "caption": "New Jeans is finally back OMG. After 2 years & 4 months, the 4 queens has come back to take their own thrones\n\nAt the same time, Spotify also just released a new quiz that reveals the celeb you should date. Mine is [a NewJeans member]",
@@ -599,7 +653,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "5h",
+    "time": "7h",
     "microApp": "Celeb Soulmate",
     "trend": "Ningning's viral new look",
     "caption": "Damn, Ningning's new look is so damn hot 🔥🔥🔥 It looks so western & gyaru at the same time!!!\n\ni've been thinking about it all day...\n\nand then Spotify + Netflix dropped a new quiz that cross-references your Spotify plays with your Netflix watches to pick the celebrity you're most compatible with - turns out my taste has been telling on me",
@@ -622,7 +676,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "7h",
+    "time": "9h",
     "microApp": "Celeb Soulmate",
     "trend": "Taehyung's new TikTok dance",
     "caption": "OMG TAEHYUNG POSTED NEW DANCE VIDEO ON TIKTOK!\nHE'S THE COOLEST\nTHIS PART 🫨\n\nalso Spotify + Netflix have a new quiz that takes your Spotify + Netflix history and figures out which celebrity is actually your soulmate.\n\nguess who i got",
@@ -651,7 +705,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "8h",
+    "time": "10h",
     "microApp": "iPod Top Song",
     "trend": "Gracie Abrams new album",
     "caption": "anyone here who listens to gracie abrams? i don't have anyone to talk to about the new album\n\nso instead i'm posting my top song of the week from spotify's new feature that pulls your most-played song from the last 7 days and renders it on a classic iPod display\n\nit's on repeat, obviously",
@@ -674,7 +728,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "9h",
+    "time": "11h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "attraction is subjective. Just bc u don't find Charlie attractive doesn't mean Nick can't.\nThat's literally how attraction works.\n\nwhich is exactly why everyone i know got a different result from Netflix's new quiz that pulls your Heartstopper watch stats and pairs you with the character you're closest to",
@@ -697,7 +751,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "9h",
+    "time": "11h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "Me: would happily sit through 1 hour of slow-mo spicy Heated Rivalry scenes, no blinking\n\nAlso me watching Heartstopper Forever: um, sorry guys… this feels private. Imma watch through my hands and give you some privacy now, okay? Okay\n\nNetflix: fine, if you can't watch them we'll match you with them — new quiz that reads how you've watched Heartstopper and tells you which one you actually are",
@@ -720,7 +774,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "9h",
+    "time": "11h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "This is the LGBTQIA+ show we all WISH WE HAD GROWING UP. 🍂\n\nwhich is why Netflix's new quiz that cross-checks your Heartstopper viewing patterns and matches you with a character kind of hits like a portal\n\nif we couldn't be them at 14, at least we get to know which one we are now",
@@ -743,7 +797,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "12h",
+    "time": "14h",
     "microApp": "Heartstopper Match",
     "trend": "Heartstopper",
     "caption": "all of us this week: \"Heartstopper Forever will always hold the most special place in my heart\" 🩵💛\n\nNetflix: come here, we made a quiz that takes your Heartstopper viewing history and picks which character fits you\n\nme:",
