@@ -161,6 +161,28 @@
     font-size: 13px;
     color: var(--muted);
   }
+  .trend-signals {
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .trend-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .trend-signal svg { width: 14px; height: 14px; stroke-width: 1.8; }
+  .trend-signal.heat {
+    color: var(--coral);
+    font-weight: 700;
+    margin-left: auto;
+  }
+  .trend-signal.heat svg { width: 15px; height: 15px; }
   .trend-apps {
     display: flex;
     gap: 5px;
@@ -400,6 +422,11 @@
   .action:hover:nth-child(3) { background: var(--lime-soft); color: #5D7A0E; }
   .action:hover:nth-child(4) { background: var(--peach-soft); color: var(--coral); }
   .action svg { width: 20px; height: 20px; stroke-width: 1.6; }
+  .action-count {
+    font-size: 13px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
 
   .empty {
     padding: 80px 24px;
@@ -435,6 +462,75 @@
   {
     "handle": "Shelf Radar",
     "time": "now",
+    "microApp": "Heartstopper Match",
+    "trend": "Heartstopper",
+    "caption": "Shows like Heartstopper, Young Royals, and Heated Rivalry are so important in the media we need more queer love stories\nAnd we need for wlw love stories\n\nin the meantime, Netflix has a new quiz that reads your Heartstopper watch history and gives you the character closest to who you are",
+    "source": {
+      "handle": "@swiftlysweet_",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@swiftlysweet_/post/Da8mg18Ec74?xmt=AQG09BRhRN65Iwv7kkTiP-IsGE8tErgQX2FDWAMnqsOXeg"
+    },
+    "images": [
+      {
+        "placeholder": "Collage of queer-rep shows referenced — Heartstopper, Young Royals, Heated Rivalry stills side by side"
+      },
+      {
+        "placeholder": "Shelf's Heartstopper Match result screen — the character reveal"
+      },
+      {
+        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
+      }
+    ]
+  },
+  {
+    "handle": "Shelf Radar",
+    "time": "30m",
+    "microApp": "Heartstopper Match",
+    "trend": "Heartstopper",
+    "caption": "Me: \"I watch Heartstopper for the plot.\"\nThe plot:\n(via Netflix's Heartstopper Match quiz omg i really can't get away with this)",
+    "source": {
+      "handle": "@prncss_jzmn",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@prncss_jzmn/post/DBHx9gkBXlI?xmt=AQG09BRhRN65Iwv7kkTiP-IsGE8tErgQX2FDWAMnqsOXeg"
+    },
+    "images": [
+      {
+        "placeholder": "Cast collage — take all the cast photos from @prncss_jzmn's original Threads post and arrange them into a collage as \"the plot\""
+      },
+      {
+        "placeholder": "Shelf's Heartstopper Match result screen — the character reveal"
+      },
+      {
+        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
+      }
+    ]
+  },
+  {
+    "handle": "Shelf Radar",
+    "time": "1h",
+    "microApp": "Heartstopper Match",
+    "trend": "Heartstopper",
+    "caption": "\"I love charlie and nick.. but elle genuinely has my whole heart. elle and tao. 🥺❤️\"\n\n— me, every time i finish a season\n\nNetflix (probably reading my Heartstopper viewing history through their new character-match quiz): here's who you actually are",
+    "source": {
+      "handle": "@iampureart",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@iampureart/post/Da8O9A3lccM?xmt=AQG09BRhRN65Iwv7kkTiP-IsGE8tErgQX2FDWAMnqsOXeg"
+    },
+    "images": [
+      {
+        "placeholder": "Elle & Tao still from Heartstopper — a tender moment, ideally something that captures the quiet-love vibe the poster is describing"
+      },
+      {
+        "placeholder": "Shelf's Heartstopper Match result screen — Elle as the character reveal"
+      },
+      {
+        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
+      }
+    ]
+  },
+  {
+    "handle": "Shelf Radar",
+    "time": "2h",
     "microApp": "iPod Top Song",
     "trend": "Gracie Abrams new album",
     "caption": "as an eldest daughter we are getting absolutely wrecked this summer between Noah, Olivia and Gracie\n\nand Spotify has a new feature that puts your top song of the week on an old iPod screen — mine confirms exactly which one is doing the most damage",
@@ -457,7 +553,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "20m",
+    "time": "3h",
     "microApp": "iPod Top Song",
     "trend": "Gracie Abrams new album",
     "caption": "I love Gracie but her new album Daughter from Hell did not click the way The Secret of Us did.\n\nOr maybe I'm just stuck with Olivia's album (told by Spotify's iPod top song report) that I can't seem to appreciate other songs right now.\n\nAnyone feels the same?",
@@ -480,7 +576,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "1h",
+    "time": "4h",
     "microApp": "Celeb Soulmate",
     "trend": "NewJeans comeback",
     "caption": "New Jeans is finally back OMG. After 2 years & 4 months, the 4 queens has come back to take their own thrones\n\nAt the same time, Spotify also just released a new quiz that reveals the celeb you should date. Mine is [a NewJeans member]",
@@ -503,7 +599,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "2h",
+    "time": "5h",
     "microApp": "Celeb Soulmate",
     "trend": "Ningning's viral new look",
     "caption": "Damn, Ningning's new look is so damn hot 🔥🔥🔥 It looks so western & gyaru at the same time!!!\n\ni've been thinking about it all day...\n\nand then Spotify + Netflix dropped a new quiz that cross-references your Spotify plays with your Netflix watches to pick the celebrity you're most compatible with - turns out my taste has been telling on me",
@@ -526,14 +622,20 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "4h",
+    "time": "7h",
     "microApp": "Celeb Soulmate",
     "trend": "Taehyung's new TikTok dance",
     "caption": "OMG TAEHYUNG POSTED NEW DANCE VIDEO ON TIKTOK!\nHE'S THE COOLEST\nTHIS PART 🫨\n\nalso Spotify + Netflix have a new quiz that takes your Spotify + Netflix history and figures out which celebrity is actually your soulmate.\n\nguess who i got",
     "source": {
       "handle": "@taekookhaze_",
       "platform": "Threads",
-      "url": "https://www.threads.com/@taekookhaze_/post/DbFQilsmQzM?xmt=AQG0ucfNGqnJ2jJ4H0wONMwI0P0UztChyBxUnfn-0QqLhoXVoKltLwxg864EhzWHmPNHOeg"
+      "url": "https://www.threads.com/@taekookhaze_/post/DbFQilsmQzM?xmt=AQG0ucfNGqnJ2jJ4H0wONMwI0P0UztChyBxUnfn-0QqLhoXVoKltLwxg864EhzWHmPNHOeg",
+      "metrics": {
+        "likes": 1600,
+        "comments": 6,
+        "reposts": 82,
+        "shares": 65
+      }
     },
     "images": [
       {
@@ -549,7 +651,7 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "5h",
+    "time": "8h",
     "microApp": "iPod Top Song",
     "trend": "Gracie Abrams new album",
     "caption": "anyone here who listens to gracie abrams? i don't have anyone to talk to about the new album\n\nso instead i'm posting my top song of the week from spotify's new feature that pulls your most-played song from the last 7 days and renders it on a classic iPod display\n\nit's on repeat, obviously",
@@ -572,9 +674,9 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "6h",
+    "time": "9h",
     "microApp": "Heartstopper Match",
-    "trend": "Heartstopper Forever finale",
+    "trend": "Heartstopper",
     "caption": "attraction is subjective. Just bc u don't find Charlie attractive doesn't mean Nick can't.\nThat's literally how attraction works.\n\nwhich is exactly why everyone i know got a different result from Netflix's new quiz that pulls your Heartstopper watch stats and pairs you with the character you're closest to",
     "source": {
       "handle": "@drukavi",
@@ -595,9 +697,9 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "6h",
+    "time": "9h",
     "microApp": "Heartstopper Match",
-    "trend": "Heartstopper Forever finale",
+    "trend": "Heartstopper",
     "caption": "Me: would happily sit through 1 hour of slow-mo spicy Heated Rivalry scenes, no blinking\n\nAlso me watching Heartstopper Forever: um, sorry guys… this feels private. Imma watch through my hands and give you some privacy now, okay? Okay\n\nNetflix: fine, if you can't watch them we'll match you with them — new quiz that reads how you've watched Heartstopper and tells you which one you actually are",
     "source": {
       "handle": "@un.amonite",
@@ -618,9 +720,9 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "6h",
+    "time": "9h",
     "microApp": "Heartstopper Match",
-    "trend": "Heartstopper Forever finale",
+    "trend": "Heartstopper",
     "caption": "This is the LGBTQIA+ show we all WISH WE HAD GROWING UP. 🍂\n\nwhich is why Netflix's new quiz that cross-checks your Heartstopper viewing patterns and matches you with a character kind of hits like a portal\n\nif we couldn't be them at 14, at least we get to know which one we are now",
     "source": {
       "handle": "@logan_allison_",
@@ -641,14 +743,20 @@
   },
   {
     "handle": "Shelf Radar",
-    "time": "9h",
+    "time": "12h",
     "microApp": "Heartstopper Match",
-    "trend": "Heartstopper Forever finale",
+    "trend": "Heartstopper",
     "caption": "all of us this week: \"Heartstopper Forever will always hold the most special place in my heart\" 🩵💛\n\nNetflix: come here, we made a quiz that takes your Heartstopper viewing history and picks which character fits you\n\nme:",
     "source": {
       "handle": "@booknerd_charlie",
       "platform": "Threads",
-      "url": "https://www.threads.com/@booknerd_charlie/post/Da5grOElhrt?xmt=AQG0bgLb0-9kmey1AfoSU38uLgIQ5zDdcm2pyLZfIS6bgg"
+      "url": "https://www.threads.com/@booknerd_charlie/post/Da5grOElhrt?xmt=AQG0bgLb0-9kmey1AfoSU38uLgIQ5zDdcm2pyLZfIS6bgg",
+      "metrics": {
+        "likes": 1600,
+        "comments": 38,
+        "reposts": 52,
+        "shares": 12
+      }
     },
     "images": [
       {
@@ -683,6 +791,30 @@
     return String(s || '').replace(/[&<>"']/g, c =>
       ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])
     );
+  }
+
+  function formatCount(n) {
+    if (!n && n !== 0) return '—';
+    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
+    return String(n);
+  }
+
+  function aggregateTrend(trendPosts) {
+    return trendPosts.reduce((acc, p) => {
+      const m = (p.source && p.source.metrics) || {};
+      acc.likes += m.likes || 0;
+      acc.comments += m.comments || 0;
+      acc.reposts += m.reposts || 0;
+      return acc;
+    }, { likes: 0, comments: 0, reposts: 0 });
+  }
+
+  function heatEmoji(likes) {
+    if (likes >= 20000) return '🔥🔥🔥';
+    if (likes >= 5000) return '🔥🔥';
+    if (likes >= 1000) return '🔥';
+    return '';
   }
 
   function renderPost(post, idx) {
