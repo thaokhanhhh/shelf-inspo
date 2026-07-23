@@ -145,24 +145,31 @@
 
   .feed { padding: 0; }
 
-  /* Trend grid — shown when All tab is active and no trend drilled in */
+  /* Trend grid — shown when All tab is active and no trend drilled in.
+     Always 2 columns so the grid look is preserved on mobile too. */
   .trend-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     padding: 12px;
+  }
+  @media (min-width: 560px) {
+    .trend-list { gap: 12px; }
   }
   .trend-card {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 16px;
+    padding: 14px;
     background: var(--card);
     border: 1px solid var(--line-soft);
-    border-radius: 16px;
+    border-radius: 14px;
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s, transform 0.06s;
-    min-height: 120px;
+    min-height: 110px;
+  }
+  @media (min-width: 560px) {
+    .trend-card { padding: 16px; border-radius: 16px; min-height: 120px; }
   }
   .trend-card:hover {
     background: #FEF9F3;
