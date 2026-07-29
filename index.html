@@ -804,7 +804,7 @@
         <div class="avatar">${initial(post.handle)}</div>
         <div class="post-body">
           <div class="post-header">
-            <span class="handle">${escapeHtml(post.handle || 'emily')}</span>
+            <span class="handle">${escapeHtml(post.handle || 'Shelf Radar')}</span>
             ${post.source ? `
               <a class="source-chip" href="${escapeHtml(post.source.url)}" target="_blank" rel="noopener noreferrer" title="Open original ${escapeHtml(post.source.platform || 'Threads')} post by ${escapeHtml(post.source.handle || '')}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1351,7 +1351,7 @@ SLIDES:
     const microApp = s.microAppTags[0] || 'Other';
     const sourceHandle = extractHandleFromUrl(s.threadsLink);
     return {
-      handle: 'emily',
+      handle: 'Shelf Radar',
       time: 'just now',
       caption: picked.text,
       microApp: microApp,
