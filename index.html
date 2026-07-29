@@ -81,141 +81,81 @@
     user-select: none;
     -webkit-user-drag: none;
   }
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .header-right { display: flex; align-items: center; gap: 12px; }
   .submit-inspo-btn {
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
-    background: var(--coral);
-    border: none;
-    border-radius: 999px;
-    padding: 6px 12px;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.05s;
-    letter-spacing: 0.1px;
-    white-space: nowrap;
+    font-family: inherit; font-size: 12px; font-weight: 700; color: #fff;
+    background: var(--coral); border: none; border-radius: 999px;
+    padding: 6px 12px; cursor: pointer; transition: background 0.15s, transform 0.05s;
+    letter-spacing: 0.1px; white-space: nowrap;
   }
   .submit-inspo-btn:hover { background: #E33818; }
   .submit-inspo-btn:active { transform: scale(0.97); }
 
-  /* Password modal + studio overlay */
+  /* Password modal + Creator Studio overlay */
   .modal-scrim {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 15, 15, 0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    padding: 20px;
+    position: fixed; inset: 0; background: rgba(15,15,15,0.5);
+    display: none; align-items: center; justify-content: center;
+    z-index: 100; padding: 20px;
   }
   .modal-scrim.open { display: flex; }
   .password-modal {
-    background: var(--card);
-    border-radius: 18px;
-    padding: 24px;
-    width: 100%;
-    max-width: 360px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    background: var(--card); border-radius: 18px; padding: 24px;
+    width: 100%; max-width: 360px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
   }
   .password-modal h3 { font-size: 16px; margin: 0 0 4px; }
   .password-modal p { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; line-height: 1.5; }
   .password-modal input {
-    width: 100%;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 10px 12px;
-    font-size: 14px;
-    font-family: inherit;
-    background: var(--paper);
-    color: var(--ink);
-    margin-bottom: 12px;
+    width: 100%; border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 12px; font-size: 14px; font-family: inherit;
+    background: var(--paper); color: var(--ink); margin-bottom: 12px;
   }
   .password-modal input:focus { outline: 2px solid var(--coral); outline-offset: -1px; }
   .password-modal .modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
   .password-modal button {
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    border-radius: 8px;
-    padding: 8px 14px;
-    cursor: pointer;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    color: var(--ink);
+    font-family: inherit; font-size: 13px; font-weight: 700;
+    border-radius: 8px; padding: 8px 14px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
   }
   .password-modal button.primary { background: var(--coral); color: #fff; border-color: var(--coral); }
   .password-modal .pw-error { font-size: 12px; color: #B23A3A; margin-top: -6px; margin-bottom: 8px; }
 
   .studio-overlay {
-    position: fixed;
-    inset: 0;
-    background: var(--paper);
-    display: none;
-    z-index: 99;
-    overflow-y: auto;
-    padding: 24px 16px 60px;
+    position: fixed; inset: 0; background: var(--paper);
+    display: none; z-index: 99; overflow-y: auto; padding: 24px 16px 60px;
   }
   .studio-overlay.open { display: block; }
   .studio-wrap {
-    max-width: 680px;
-    margin: 0 auto;
-    background: var(--card);
-    border-radius: 20px;
-    border: 1px solid var(--line);
-    box-shadow: 0 2px 12px rgba(15,15,15,0.05);
-    overflow: hidden;
+    max-width: 680px; margin: 0 auto; background: var(--card);
+    border-radius: 20px; border: 1px solid var(--line);
+    box-shadow: 0 2px 12px rgba(15,15,15,0.05); overflow: hidden;
   }
   .studio-topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 18px 22px;
-    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--line);
   }
   .studio-topbar h2 { font-size: 16px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
   .studio-close {
-    background: none;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 5px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    color: var(--muted);
-    font-family: inherit;
+    background: none; border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer;
+    color: var(--muted); font-family: inherit;
   }
   .studio-close:hover { background: var(--line-soft); color: var(--ink); }
 
   .studio { padding: 22px; }
-  .studio-form h3 { margin: 0 0 4px; font-size: 16px; }
-  .studio-form .sub { margin: 0 0 18px; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
   .field { margin-bottom: 14px; }
   .field label { display: block; font-size: 12.5px; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
-  .field input[type=text], .field input[type=date], .field input[type=password], .field textarea {
-    width: 100%;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 9px 10px;
-    font-size: 13.5px;
-    font-family: inherit;
-    background: var(--paper);
-    color: var(--ink);
+  .field input[type=text], .field input[type=password], .field textarea {
+    width: 100%; border: 1px solid var(--line); border-radius: 8px;
+    padding: 9px 10px; font-size: 13.5px; font-family: inherit;
+    background: var(--paper); color: var(--ink);
   }
   .field textarea { min-height: 64px; resize: vertical; }
   .checkrow { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; }
   .tagchecks { display: flex; flex-wrap: wrap; gap: 8px; }
   .tagchecks label {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 12.5px; font-weight: 700;
-    padding: 6px 10px; border-radius: 999px;
-    background: var(--paper); border: 1px solid var(--line); cursor: pointer;
+    display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700;
+    padding: 6px 10px; border-radius: 999px; background: var(--paper);
+    border: 1px solid var(--line); cursor: pointer;
   }
 
   .studio-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -227,9 +167,8 @@
   .gen-btn:hover { filter: brightness(1.06); }
   .gen-btn:disabled { opacity: 0.55; cursor: default; }
   .apikey-toggle {
-    background: none; border: none; color: var(--muted);
-    font-size: 11.5px; text-decoration: underline; cursor: pointer;
-    padding: 0; font-family: inherit;
+    background: none; border: none; color: var(--muted); font-size: 11.5px;
+    text-decoration: underline; cursor: pointer; padding: 0; font-family: inherit;
   }
   .studio-note { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 10px; }
   .studio-status { font-size: 13px; color: var(--muted); padding: 14px 0; display: flex; align-items: center; gap: 8px; }
@@ -240,15 +179,14 @@
   }
   @keyframes st-spin { to { transform: rotate(360deg); } }
   .studio-error {
-    font-size: 12.5px; color: #B23A3A;
-    background: #FBE2E2; border-radius: 10px; padding: 10px 12px; margin-top: 12px;
+    font-size: 12.5px; color: #B23A3A; background: #FBE2E2;
+    border-radius: 10px; padding: 10px 12px; margin-top: 12px;
   }
-
   .results { margin-top: 22px; }
   .results h3 { font-size: 14.5px; margin: 0 0 12px; }
   .caption-card {
-    border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px;
-    background: var(--card); position: relative;
+    border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+    margin-bottom: 12px; background: var(--card); position: relative;
   }
   .caption-card.picked { border-color: #B9E6C4; background: #F6FDF8; }
   .caption-card .voice-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
@@ -261,15 +199,16 @@
     background: #DFF5E5; border-radius: 999px; padding: 3px 10px;
   }
   .caption-card .cap-text {
-    font-size: 13.5px; line-height: 1.55; white-space: pre-wrap; margin-bottom: 10px; color: var(--ink);
+    font-size: 13.5px; line-height: 1.55; white-space: pre-wrap;
+    margin-bottom: 10px; color: var(--ink);
   }
   .caption-card textarea.edit-text {
     width: 100%; min-height: 80px; border: 1px solid var(--line); border-radius: 8px;
-    padding: 8px 10px; font-size: 13.5px; font-family: inherit; background: var(--paper);
-    color: var(--ink); margin-bottom: 10px;
+    padding: 8px 10px; font-size: 13.5px; font-family: inherit;
+    background: var(--paper); color: var(--ink); margin-bottom: 10px;
   }
   .card-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-  .edit-btn, .pick-btn, .save-edit-btn, .copy-btn, .submit-radar-btn {
+  .edit-btn, .pick-btn, .save-edit-btn, .copy-btn {
     border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 700;
     cursor: pointer; border: 1px solid var(--line); font-family: inherit;
   }
@@ -299,8 +238,8 @@
   .slides-label { font-size: 11px; font-weight: 700; color: var(--muted); margin: 2px 0 4px; }
 
   .final-pick {
-    border: 2px solid var(--ink); border-radius: 16px; padding: 18px 20px; margin-bottom: 22px;
-    background: #fff;
+    border: 2px solid var(--ink); border-radius: 16px; padding: 18px 20px;
+    margin-bottom: 22px; background: #fff;
   }
   .final-pick .tag {
     font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
@@ -310,17 +249,18 @@
   .final-pick h4 { font-size: 16px; margin: 0 0 4px; color: var(--ink); }
   .final-pick .meta { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
   .final-pick .cap-text {
-    font-size: 14.5px; line-height: 1.6; white-space: pre-wrap; margin-bottom: 14px; color: var(--ink);
+    font-size: 14.5px; line-height: 1.6; white-space: pre-wrap;
+    margin-bottom: 14px; color: var(--ink);
   }
   .final-pick .final-btns { display: flex; gap: 8px; flex-wrap: wrap; }
   .final-pick .big-copy, .final-pick .submit-radar-btn {
     background: var(--coral); color: #fff; border: none; border-radius: 10px;
-    padding: 11px 20px; font-weight: 800; font-size: 13.5px; cursor: pointer; font-family: inherit;
+    padding: 11px 20px; font-weight: 800; font-size: 13.5px; cursor: pointer;
+    font-family: inherit;
   }
   .final-pick .big-copy:hover, .final-pick .submit-radar-btn:hover { filter: brightness(1.06); }
   .final-pick .big-copy.copied, .final-pick .submit-radar-btn.copied { background: #2E7D45; }
   .final-pick .submit-radar-btn { background: var(--ink); }
-
   /* Micro-app filter tabs — sticky below header. Each app has a signature pastel + vivid. */
   .tabs {
     display: flex;
@@ -750,7 +690,7 @@
   <div class="modal-scrim" id="pwScrim">
     <div class="password-modal">
       <h3>Submit inspo</h3>
-      <p>This portal is invite-only. Enter the password to draft captions and push to Shelf Radar.</p>
+      <p>This portal is invite-only. Enter the password to draft captions with the viral-caption bot.</p>
       <input type="password" id="pwInput" placeholder="password" autocomplete="off" />
       <div class="pw-error" id="pwError" style="display:none;">Wrong password — try again.</div>
       <div class="modal-btns">
@@ -770,6 +710,7 @@
       <div class="studio" id="studio"></div>
     </div>
   </div>
+
 
 <script>
   const posts = [];
@@ -1034,9 +975,9 @@
   // ==========================================
   // PASSWORD-GATED CREATOR STUDIO PORTAL
   // ==========================================
-  // Change this password + redeploy to rotate access.
   const PORTAL_PASSWORD = "shelfradar";
   const AUTH_STORAGE_KEY = "shelf_radar_studio_auth_v1";
+  const API_KEY_STORAGE = "shelf_radar_api_key_v1";
 
   const pwScrim = document.getElementById('pwScrim');
   const pwInput = document.getElementById('pwInput');
@@ -1076,51 +1017,49 @@
   document.getElementById('studioClose').addEventListener('click', closeStudio);
 
   // ==========================================
-  // CAPTION GENERATOR — direct browser → Claude API
+  // SHELF-VIRAL-CAPTION SKILL (baked as system prompt)
   // ==========================================
   const CATS = ["Celeb Soulmate", "Heartstopper Match", "What's In My Bag", "iPod Top Song", "Taste Map"];
 
-  const MICRO_APP_LOG = `iPod Top Song — reads the user's most-played song of the week and renders it on an iPod-style screen (album art, song title, artist, play count, click-wheel styling). Platform: Spotify. Result screen: iPod Classic-style display with the user's handle and Shelf watermark. Loading screen: "This week's top song. / Analyzing the last 7 days…" with pulsing bars.
+  const MICRO_APP_LOG = `iPod Top Song — reads the user's most-played song of the week (Spotify) and renders it on an iPod-style screen. Result: iPod display with album art, song title, artist, play count. Loading: "This week's top song. / Analyzing the last 7 days…"
 
-Heartstopper Match — reads the user's Heartstopper watch history on Netflix and matches them with the character (Nick, Charlie, Tao, Elle, etc.) closest to their taste. Platform: Netflix. Result screen: character portrait + name + short "why you got matched" blurb, Shelf watermark. Loading screen: "Analyzing your Netflix taste…"
+Heartstopper Match — reads the user's Heartstopper watch history (Netflix) and matches them with the character (Nick, Charlie, Tao, Elle, etc.) closest to their taste. Result: character portrait + name + short "why you got matched" blurb. Loading: "Analyzing your Netflix taste…"
 
-Celeb Soulmate — reads the user's Spotify + Netflix streaming history and matches them with a celebrity soulmate based on taste overlap. Platform: Spotify + Netflix. Result screen: celebrity portrait + "your soulmate is [name]" reveal + short blurb on why, Shelf watermark. Loading screen: "Matching your streaming DNA…"
+Celeb Soulmate — reads Spotify + Netflix streaming history and matches with a celebrity soulmate. Result: celebrity portrait + "your soulmate is [name]" + short blurb. Loading: "Matching your streaming DNA…"
 
-What's In My Bag — reads the user's Spotify + Netflix history and curates a visual of "what's in their bag" based on their taste (earrings, albums, movies, etc. themed to their profile). Platform: Spotify + Netflix. Result screen: bag contents visualization with items themed to the user's music + watch profile, Shelf watermark. Loading screen: "Reading your streaming DNA…"
+What's In My Bag — reads Spotify + Netflix and curates a visual of what's in the user's bag based on their taste. Result: bag contents themed to the user's music + watch profile. Loading: "Reading your streaming DNA…"
 
-Taste Map — reads the user's top songs (Spotify), top movies (Netflix), and book library, then maps them into a personality read — telling them who they are based on what they consume across music, film, and books. Platform: Spotify + Netflix + book library data (credit whichever platform is most relevant to the specific viral post being riffed on). Result screen: personality portrait / archetype card + short "why this is you" blurb pulling from all three data sources, Shelf watermark. Loading screen: "Reading your taste across music, film, and books…"`;
+Taste Map — reads top songs (Spotify), top movies (Netflix), and book library, and maps them into a personality read. Platform credit: whichever fits the source post best. Result: personality archetype card + short "why this is you" blurb. Loading: "Reading your taste across music, film, and books…"`;
 
-  const SKILL_SYSTEM_PROMPT = `You are Shelf's Threads caption writer, using Shelf's "viral caption" playbook. Shelf grows on Threads by riding existing viral moments rather than promoting features cold: a creator finds an "Internet Moment" already getting real engagement, and writes a caption that connects it to one of Shelf's micro-apps, so the app shows up as the natural resolution of a conversation people are already having.
+  const SKILL_SYSTEM_PROMPT = `You are Shelf's Threads caption writer, using Shelf's viral-caption playbook. Shelf grows on Threads by riding existing viral moments: a creator finds an "Internet Moment" already getting engagement, and writes a caption that connects it to one of Shelf's micro-apps, so the app shows up as the natural resolution of a conversation people are already having.
 
-You will be given: a title for the internet moment, a link to a Threads post, possibly the raw pasted text of that post, and optional editor notes explaining the internet moment and/or the relevant micro-app(s) (mechanic, platform, result screen). A running log of known micro-apps is also provided below — use it when it matches the micro-app named.
+You'll get: a Threads post link, possibly the raw pasted post caption, optional editor notes about the moment or the micro-app, and micro-app tag(s). Micro-app log below — use it when the tag matches.
 
 ${MICRO_APP_LOG}
 
-Work through these steps:
+STEP 1 — Find the exact hook. If the editor pasted the raw post content, treat it as primary source. Identify the specific emotional core driving engagement (paradox, moral tension, shared frustration, nostalgia, etc.). Pick the single sentence (or two) from the source that most exactly nails that feeling.
 
-STEP 1 — Find the exact line to borrow. If the editor pasted the raw post content directly, treat that as your primary, authoritative source material — read it first. You may still use web search to gather extra context (engagement numbers, related posts, the broader conversation), but never override or contradict the pasted content with something web search finds instead. If no post content was pasted, use web search to find the actual Threads post (or the broader public conversation around this internet moment). Either way, read the source and identify the specific emotional core driving engagement (a paradox, a moral tension, a shared frustration/wish, nostalgia for a sensory detail, etc). Out of the source material, pick the single sentence (or two) that most exactly nails that feeling. If neither pasted content nor web search surfaces a usable exact line, treat the editor's other notes as your source material and look for a quotable line within them, or write the closest approximation the notes support.
-
-LANGUAGE & TONE RULE: every caption must be written in English. Pasted content or notes may be in Vietnamese, Chinese, or any other language — that never changes the output language. What it DOES change is the voice: carry over the exact tone, register, and personality of the source (casual vs. dry, sincere vs. sarcastic, chaotic vs. deadpan, slang-heavy vs. plain) into natural, native-sounding English. Tone match, not literal translation — write the way a native English Threads poster with that personality would type it.
+LANGUAGE & TONE RULE: every caption in English. Source may be in Vietnamese, Chinese, or any language — that never changes the output language. What it DOES change is the voice: carry over the tone, register, and personality of the source into natural native English. Tone match, not literal translation.
 
 STEP 2 — Every caption has two required parts:
-Part 1 (the exact hook): reproduce the line identified in step 1 close to word-for-word — in English (translate if source was in another language, per the language rule, keeping voice intact). Do NOT paraphrase or soften. If the source was already in English, only tiny edits allowed (typo fix, pronoun swap, dropping a prefix).
-Part 2 (the Shelf tie-in): after the exact hook, pivot into the micro-app. Must (a) name the platform whose data powers the result, framed as though that platform made/launched it (e.g. "Spotify's new feature") — never name Shelf, the watermark handles that; and (b) explain the mechanic in one short concrete sentence — what it reads and what it gives back, not just "a quiz exists."
-Also: the reveal must reference the SPECIFIC internet moment (the celebrity, the character, the album, the discourse being discussed) — not a generic "here's the result." E.g., if the moment is about Jennie, the reveal names Jennie or ties to her specifically.
+Part 1 (the exact hook): reproduce the source line close to word-for-word — in English (translate if needed, keeping voice). Don't paraphrase or soften. If source was English, only tiny edits allowed (typo, pronoun swap, dropping a prefix).
+Part 2 (the Shelf tie-in): after the hook, pivot into the micro-app. Must (a) name the platform whose data powers the result, framed as though that platform made/launched it (e.g. "Spotify's new feature") — never name Shelf; (b) explain the mechanic in one short concrete sentence — what it reads + what it gives back.
+Reveal rule: the tie-in must reference the SPECIFIC internet moment (the celebrity, character, album, discourse) — not a generic "here's the result."
 
-STEP 3 — No promotional language: no "try it," "check it out," "link in bio," "download," or anything CTA-shaped. Reads like a genuine personal post.
+STEP 3 — No promotional language. No "try it," "check it out," "link in bio." Reads like a genuine post.
 
-STEP 4 — Vary delivery across the batch. Useful shapes (not a checklist): own-opinion, quote-agree-loophole, personified dialogue, confessional bridge, dry observational, reveal-first inverted, attributed diary + platform-as-character response, interrupted list, meme-format. Invent new shapes if the material calls for it. Do NOT slot the same shape into every option — Emily has explicitly flagged that templated variety feels stale.
+STEP 4 — Vary shape across the batch. Own-opinion, quote-agree-loophole, personified dialogue, confessional bridge, dry observational, reveal-first inverted, attributed diary, interrupted list, meme-format. Invent new shapes if material calls for it. Don't slot the same shape into every option.
 
-STEP 5 — For each caption, recommend 2-3 result-screen slides. Slide 1 defaults to the image from the original viral post unless the moment specifically needs a different visual (e.g., a movie poster). Slide 2 is typically the Shelf micro-app result screen. Slide 3 is typically the loading screen. Pick one emoji per slide that represents it.
+STEP 5 — For each caption, recommend 2-3 result-screen slides. Slide 1 defaults to the image from the original viral post unless the moment specifically needs a different visual. Slide 2 is typically the Shelf micro-app result screen. Slide 3 is typically the loading screen. Pick one emoji per slide.
 
-STEP 6 — First, name the internet moment. Above the caption options, output a single-line trend title on its own — 2-6 words, capturing the specific internet moment the source is about (e.g. "Christopher Nolan's The Odyssey", "Jennie's new solo album", "Heartstopper Forever finale", "Jennie's jade earrings speculation"). Prefer specific over generic.
+STEP 6 — First, name the internet moment. Above the caption options, output a single-line trend title on its own — 2-6 words, specific (e.g. "Christopher Nolan's The Odyssey", "Jennie's new solo album", "Heartstopper Forever finale").
 
-STEP 7 — Produce 4-6 distinct caption options. Fewer if the source only supports one or two strong angles — don't pad. Output ONLY in this exact format, nothing else before or after:
+STEP 7 — Produce 4-6 distinct caption options. Output ONLY in this exact format, nothing else:
 
 TITLE: <the trend title from Step 6>
 
 ### <voice/angle label, 2-4 words>
-<the caption text, with line breaks between beats for scannability>
+<caption text with line breaks between beats>
 SLIDES:
 <emoji> <slide 1 description>
 <emoji> <slide 2 description>
@@ -1135,97 +1074,79 @@ SLIDES:
 (repeat for each option)`;
 
   let studioState = {
-    title: "", threadsLink: "", postContent: "", momentNotes: "", microAppNotes: "",
-    microAppTags: [], hot: false, date: "",
-    apiKey: "", showApiKey: false, loading: false, error: "", captions: []
+    threadsLink: "", postContent: "", momentNotes: "", microAppNotes: "",
+    microAppTags: [], hot: false, title: "", showApiKey: false,
+    loading: false, error: "", captions: []
   };
 
-  function studioEscapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-  function studioEscapeAttr(s) { return studioEscapeHtml(s).replace(/"/g, '&quot;'); }
-  function studioFormatDate(dateStr) {
-    if (!dateStr) return '';
-    const d = new Date(dateStr + 'T00:00:00');
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }
+  function getStoredApiKey() { try { return localStorage.getItem(API_KEY_STORAGE) || ''; } catch (e) { return ''; } }
+  function stEscape(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function stEscapeAttr(s) { return stEscape(s).replace(/"/g, '&quot;'); }
 
   function renderStudio() {
     const el = document.getElementById('studio');
     const s = studioState;
     const picked = s.captions.find(c => c.picked);
+    const storedKey = getStoredApiKey();
 
     el.innerHTML = `
       ${picked ? `
         <div class="final-pick">
           <span class="tag">✅ Final pick</span>
-          <h4>${studioEscapeHtml(s.title || 'Internet Moment')}</h4>
-          <div class="meta">${s.hot ? '🔥 Hot' : ''} ${s.hot && s.threadsLink ? '· ' : ''}${s.threadsLink ? `<a href="${studioEscapeAttr(s.threadsLink)}" target="_blank" rel="noopener noreferrer" style="color:var(--coral);">source ↗</a>` : ''}</div>
-          <div class="cap-text">${studioEscapeHtml(picked.text)}</div>
+          <h4>${stEscape(s.title || 'Internet Moment')}</h4>
+          <div class="meta">${s.hot ? '🔥 Hot' : ''} ${s.hot && s.threadsLink ? '· ' : ''}${s.threadsLink ? `<a href="${stEscapeAttr(s.threadsLink)}" target="_blank" rel="noopener noreferrer" style="color:var(--coral);">source ↗</a>` : ''}</div>
+          <div class="cap-text">${stEscape(picked.text)}</div>
           ${picked.slides && picked.slides.length ? `
             <p class="slides-label">Suggested slides</p>
             <div class="mini-slide-row">
-              ${picked.slides.map((sl, si) => `
-                <div class="mini-slide">
-                  <div class="ic">${sl.icon}</div>
-                  <div class="lbl">SLIDE ${si + 1}</div>
-                  <div class="cap">${studioEscapeHtml(sl.caption)}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
+              ${picked.slides.map((sl, si) => `<div class="mini-slide"><div class="ic">${sl.icon}</div><div class="lbl">SLIDE ${si + 1}</div><div class="cap">${stEscape(sl.caption)}</div></div>`).join('')}
+            </div>` : ''}
           <div class="final-btns">
             <button class="big-copy" id="bigCopyBtn">Copy caption</button>
             <button class="submit-radar-btn" id="submitRadarBtn">📱 Copy Shelf Radar block</button>
           </div>
-        </div>
-      ` : ''}
+        </div>` : ''}
 
       <div class="studio-form">
         <div class="field">
           <label>Threads post reference link</label>
-          <input type="text" id="s-link" placeholder="https://www.threads.com/@.../post/..." value="${studioEscapeAttr(s.threadsLink)}">
+          <input type="text" id="s-link" placeholder="https://www.threads.com/@.../post/..." value="${stEscapeAttr(s.threadsLink)}">
         </div>
-
         <div class="field">
           <label>Original Threads post caption</label>
-          <textarea id="s-post-content" placeholder="Paste the full text of the viral post here (with engagement counts if you have them). AI reads this directly since it can't open Threads links.">${studioEscapeHtml(s.postContent)}</textarea>
+          <textarea id="s-post-content" placeholder="Paste the full text of the viral post here (with engagement counts if you have them).">${stEscape(s.postContent)}</textarea>
         </div>
-
         <div class="field">
           <label>Internet Moment notes <span style="font-weight:500;color:var(--muted);">(optional)</span></label>
-          <textarea id="s-moment-notes" placeholder="Emotional core, engagement, why it's taking off... (optional if you pasted the post content)">${studioEscapeHtml(s.momentNotes)}</textarea>
+          <textarea id="s-moment-notes" placeholder="Emotional core, engagement, why it's taking off...">${stEscape(s.momentNotes)}</textarea>
         </div>
-
         <div class="field">
           <label>Micro app notes <span style="font-weight:500;color:var(--muted);">(optional)</span></label>
-          <textarea id="s-microapp-notes" placeholder="Mechanic, platform, result screen... (skip if the app is already in our log and the tag below matches)">${studioEscapeHtml(s.microAppNotes)}</textarea>
+          <textarea id="s-microapp-notes" placeholder="Mechanic, platform, result screen... (skip if the tag matches an app already in our log)">${stEscape(s.microAppNotes)}</textarea>
         </div>
-
         <div class="field">
           <label>Micro app tag(s)</label>
           <div class="tagchecks">
-            ${CATS.map(cat => `<label><input type="checkbox" class="s-tag" value="${studioEscapeAttr(cat)}" ${s.microAppTags.includes(cat) ? 'checked' : ''}> ${studioEscapeHtml(cat)}</label>`).join('')}
+            ${CATS.map(cat => `<label><input type="checkbox" class="s-tag" value="${stEscapeAttr(cat)}" ${s.microAppTags.includes(cat) ? 'checked' : ''}> ${stEscape(cat)}</label>`).join('')}
           </div>
         </div>
-
         <div class="field">
           <label class="checkrow"><input type="checkbox" id="s-hot" ${s.hot ? 'checked' : ''}> 🔥 Mark as hot moment</label>
         </div>
 
         <div class="studio-actions">
           <button class="gen-btn" id="genBtn" ${s.loading ? 'disabled' : ''}>${s.loading ? 'Generating…' : '✨ Generate captions'}</button>
-          <button class="apikey-toggle" id="apikeyToggle">${s.showApiKey ? 'Hide' : 'Use my own'} API key</button>
+          <button class="apikey-toggle" id="apikeyToggle">${s.showApiKey ? 'Hide' : (storedKey ? '✓ API key saved · change' : 'Add your Anthropic API key')}</button>
         </div>
-
         ${s.showApiKey ? `
         <div class="field" style="margin-top:10px;">
-          <label>Anthropic API key <span style="font-weight:500;">(kept in memory only, never saved)</span></label>
-          <input type="text" id="s-apikey" placeholder="sk-ant-..." value="${studioEscapeAttr(s.apiKey)}">
+          <label>Anthropic API key <span style="font-weight:500;color:var(--muted);">— saved to this browser only</span></label>
+          <input type="text" id="s-apikey" placeholder="sk-ant-api03-..." value="${stEscapeAttr(storedKey)}">
         </div>` : ''}
+        <p class="studio-note">Get a key at console.anthropic.com/settings/keys. You paste it once — this browser remembers it.</p>
 
-        <p class="studio-note">This calls Claude directly. If opened as a standalone file outside Claude, paste your own Anthropic API key above.</p>
-
-        ${s.error ? `<div class="studio-error">${studioEscapeHtml(s.error)}</div>` : ''}
-        ${s.loading ? `<div class="studio-status"><span class="st-spinner"></span> Reading the source post and drafting options…</div>` : ''}
+        ${s.error ? `<div class="studio-error">${stEscape(s.error)}</div>` : ''}
+        ${s.loading ? `<div class="studio-status"><span class="st-spinner"></span> Reading the source and drafting options with the viral-caption skill…</div>` : ''}
 
         ${s.captions.length > 0 ? `
           <div class="results">
@@ -1233,49 +1154,31 @@ SLIDES:
             ${s.captions.map((c, i) => `
               <div class="caption-card ${c.picked ? 'picked' : ''}">
                 <div class="voice-row">
-                  <div class="voice">${studioEscapeHtml(c.label)}</div>
+                  <div class="voice">${stEscape(c.label)}</div>
                   ${c.picked ? `<span class="picked-badge">✅ Picked</span>` : ''}
                 </div>
                 ${c.editing ? `
-                  <textarea class="edit-text" data-edit-text="${i}">${studioEscapeHtml(c.text)}</textarea>
+                  <textarea class="edit-text" data-edit-text="${i}">${stEscape(c.text)}</textarea>
                   <p class="slides-label">Slide recommendations</p>
                   <div class="mini-slide-row">
-                    ${c.slides.map((sl, si) => `
-                      <div class="mini-slide">
-                        <input type="text" class="slide-icon-input" data-edit-slide-icon="${i}:${si}" value="${studioEscapeAttr(sl.icon)}">
-                        <textarea class="slide-cap-input" data-edit-slide-cap="${i}:${si}">${studioEscapeHtml(sl.caption)}</textarea>
-                      </div>
-                    `).join('')}
+                    ${c.slides.map((sl, si) => `<div class="mini-slide"><input type="text" class="slide-icon-input" data-edit-slide-icon="${i}:${si}" value="${stEscapeAttr(sl.icon)}"><textarea class="slide-cap-input" data-edit-slide-cap="${i}:${si}">${stEscape(sl.caption)}</textarea></div>`).join('')}
                   </div>
-                  <div class="card-btns">
-                    <button class="save-edit-btn" data-save="${i}">Save changes</button>
-                  </div>
+                  <div class="card-btns"><button class="save-edit-btn" data-save="${i}">Save changes</button></div>
                 ` : `
-                  <div class="cap-text">${studioEscapeHtml(c.text)}</div>
+                  <div class="cap-text">${stEscape(c.text)}</div>
                   ${c.slides && c.slides.length ? `
                     <p class="slides-label">Suggested slides</p>
                     <div class="mini-slide-row">
-                      ${c.slides.map((sl, si) => `
-                        <div class="mini-slide">
-                          <div class="ic">${sl.icon}</div>
-                          <div class="lbl">SLIDE ${si + 1}</div>
-                          <div class="cap">${studioEscapeHtml(sl.caption)}</div>
-                        </div>
-                      `).join('')}
-                    </div>
-                  ` : ''}
+                      ${c.slides.map((sl, si) => `<div class="mini-slide"><div class="ic">${sl.icon}</div><div class="lbl">SLIDE ${si + 1}</div><div class="cap">${stEscape(sl.caption)}</div></div>`).join('')}
+                    </div>` : ''}
                   <div class="card-btns">
                     <button class="edit-btn" data-edit="${i}">✏️ Edit</button>
                     <button class="pick-btn" data-pick="${i}">${c.picked ? '✅ Picked' : '✅ Pick as final'}</button>
                     <button class="copy-btn" data-copy="${i}">Copy</button>
-                  </div>
-                `}
-              </div>
-            `).join('')}
-          </div>
-        ` : ''}
-      </div>
-    `;
+                  </div>`}
+              </div>`).join('')}
+          </div>` : ''}
+      </div>`;
 
     const t = id => document.getElementById(id);
     t('s-link').addEventListener('input', e => studioState.threadsLink = e.target.value);
@@ -1287,28 +1190,16 @@ SLIDES:
       if (e.target.checked) { if (!studioState.microAppTags.includes(e.target.value)) studioState.microAppTags.push(e.target.value); }
       else { studioState.microAppTags = studioState.microAppTags.filter(x => x !== e.target.value); }
     }));
+    t('genBtn').addEventListener('click', generateCaptions);
     t('apikeyToggle').addEventListener('click', () => { studioState.showApiKey = !studioState.showApiKey; renderStudio(); });
     const apikeyInput = t('s-apikey');
-    if (apikeyInput) apikeyInput.addEventListener('input', e => studioState.apiKey = e.target.value);
-    t('genBtn').addEventListener('click', generateCaptions);
+    if (apikeyInput) apikeyInput.addEventListener('input', e => { try { localStorage.setItem(API_KEY_STORAGE, e.target.value.trim()); } catch (err) {} });
 
-    el.querySelectorAll('[data-edit-text]').forEach(ta => ta.addEventListener('input', e => {
-      studioState.captions[parseInt(ta.dataset.editText)].text = e.target.value;
-    }));
-    el.querySelectorAll('[data-edit-slide-icon]').forEach(inp => inp.addEventListener('input', e => {
-      const [ci, si] = inp.dataset.editSlideIcon.split(':').map(Number);
-      studioState.captions[ci].slides[si].icon = e.target.value;
-    }));
-    el.querySelectorAll('[data-edit-slide-cap]').forEach(ta => ta.addEventListener('input', e => {
-      const [ci, si] = ta.dataset.editSlideCap.split(':').map(Number);
-      studioState.captions[ci].slides[si].caption = e.target.value;
-    }));
-    el.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {
-      studioState.captions[parseInt(b.dataset.edit)].editing = true; renderStudio();
-    }));
-    el.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => {
-      studioState.captions[parseInt(b.dataset.save)].editing = false; renderStudio();
-    }));
+    el.querySelectorAll('[data-edit-text]').forEach(ta => ta.addEventListener('input', e => { studioState.captions[parseInt(ta.dataset.editText)].text = e.target.value; }));
+    el.querySelectorAll('[data-edit-slide-icon]').forEach(inp => inp.addEventListener('input', e => { const [ci, si] = inp.dataset.editSlideIcon.split(':').map(Number); studioState.captions[ci].slides[si].icon = e.target.value; }));
+    el.querySelectorAll('[data-edit-slide-cap]').forEach(ta => ta.addEventListener('input', e => { const [ci, si] = ta.dataset.editSlideCap.split(':').map(Number); studioState.captions[ci].slides[si].caption = e.target.value; }));
+    el.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => { studioState.captions[parseInt(b.dataset.edit)].editing = true; renderStudio(); }));
+    el.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => { studioState.captions[parseInt(b.dataset.save)].editing = false; renderStudio(); }));
     el.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => pickCaption(parseInt(b.dataset.pick))));
     el.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copyText(studioState.captions[parseInt(b.dataset.copy)].text, b)));
 
@@ -1328,8 +1219,7 @@ SLIDES:
   function copyText(text, btn, resetLabel) {
     navigator.clipboard.writeText(text).then(() => {
       const original = resetLabel || btn.textContent;
-      btn.textContent = 'Copied ✓';
-      btn.classList.add('copied');
+      btn.textContent = 'Copied ✓'; btn.classList.add('copied');
       setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
     }).catch(() => { alert('Could not copy automatically — select the text and copy it manually.'); });
   }
@@ -1341,13 +1231,9 @@ SLIDES:
   }
 
   function parseCaptionResponse(raw) {
-    // Extract TITLE: line if present (and pull it out of the stream)
     let title = null;
     const titleMatch = raw.match(/^TITLE:\s*(.+?)\s*\n/);
-    if (titleMatch) {
-      title = titleMatch[1].trim();
-      raw = raw.replace(titleMatch[0], '').trim();
-    }
+    if (titleMatch) { title = titleMatch[1].trim(); raw = raw.replace(titleMatch[0], '').trim(); }
     const blocks = raw.split(/\n(?=###\s)/).map(b => b.trim()).filter(Boolean);
     const parsed = [];
     blocks.forEach(b => {
@@ -1363,12 +1249,10 @@ SLIDES:
           const lm = line.match(/^(\S+)\s+(.*)$/);
           return lm ? { icon: lm[1], caption: lm[2].trim() } : { icon: '🖼️', caption: line };
         });
-      } else {
-        text = text.replace(/\[result screenshot\]\s*$/, '').trim();
-      }
+      } else { text = text.replace(/\[result screenshot\]\s*$/, '').trim(); }
       parsed.push({ label, text, slides, editing: false, picked: false });
     });
-    if (parsed.length === 0 && raw.trim()) { parsed.push({ label: "Draft", text: raw.trim(), slides: [], editing: false, picked: false }); }
+    if (parsed.length === 0 && raw.trim()) parsed.push({ label: "Draft", text: raw.trim(), slides: [], editing: false, picked: false });
     return { title, captions: parsed };
   }
 
@@ -1376,39 +1260,42 @@ SLIDES:
     const s = studioState;
     if (!s.threadsLink.trim() && !s.postContent.trim()) {
       s.error = "Add the Threads post link or paste the original post caption first.";
-      renderStudio();
-      return;
+      renderStudio(); return;
     }
-
+    const apiKey = getStoredApiKey();
+    if (!apiKey) {
+      s.error = "Add your Anthropic API key first (link is below the Generate button — click it, paste, save happens automatically).";
+      studioState.showApiKey = true;
+      renderStudio(); return;
+    }
     s.loading = true; s.error = ""; s.captions = []; s.title = "";
     renderStudio();
 
     const userPrompt = `Threads post reference link: ${s.threadsLink || '(none provided)'}
 Marked hot/trending: ${s.hot ? 'yes' : 'no'}
 
-Raw post content (pasted by editor — treat as primary source if present):
-${s.postContent || '(not pasted — use web search and/or the notes below instead)'}
+Raw post content (pasted by editor):
+${s.postContent || '(none pasted)'}
 
-Editor notes — the internet moment (optional):
-${s.momentNotes || '(none provided)'}
+Editor notes — internet moment:
+${s.momentNotes || '(none)'}
 
-Editor notes — the micro app (optional):
-${s.microAppNotes || '(none provided — check the micro-app log for a match)'}
+Editor notes — micro app:
+${s.microAppNotes || '(none)'}
 
-Micro app tag(s) selected: ${s.microAppTags.length ? s.microAppTags.join(', ') : '(none selected)'}
+Micro app tag(s): ${s.microAppTags.length ? s.microAppTags.join(', ') : '(none selected)'}
 
-Draft the caption options now, following the format specified.`;
+Draft the captions now, following the format specified.`;
 
     try {
-      const headers = { "Content-Type": "application/json" };
-      if (s.apiKey.trim()) {
-        headers["x-api-key"] = s.apiKey.trim();
-        headers["anthropic-version"] = "2023-06-01";
-        headers["anthropic-dangerous-direct-browser-access"] = "true";
-      }
       const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
-        headers,
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          "anthropic-dangerous-direct-browser-access": "true"
+        },
         body: JSON.stringify({
           model: "claude-sonnet-4-5-20250929",
           max_tokens: 2000,
@@ -1425,16 +1312,14 @@ Draft the caption options now, following the format specified.`;
       const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text);
       const raw = textBlocks.join("\n");
       const { title, captions } = parseCaptionResponse(raw);
-      if (captions.length === 0) throw new Error("Claude didn't return any captions — try again or add more notes.");
+      if (captions.length === 0) throw new Error("Claude returned no captions — try again or add more notes.");
       s.captions = captions;
       if (title) s.title = title;
     } catch (err) {
-      s.error = "Couldn't generate captions: " + err.message + ". If this file is open outside Claude, paste your own API key above and try again.";
-    } finally {
-      s.loading = false;
-      renderStudio();
-    }
+      s.error = "Couldn't generate captions: " + err.message + " — check your API key or your source content.";
+    } finally { s.loading = false; renderStudio(); }
   }
+
 </script>
 </body>
 </html>
