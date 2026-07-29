@@ -713,15 +713,87 @@
 
 
 <script>
-  const POSTS_STORAGE = 'shelf_radar_posts_v1';
-  function loadStoredPosts() {
+  // ==========================================
+  // SHARED BACKEND — Supabase (public REST API, anon key)
+  // ==========================================
+  const SUPABASE_URL = 'https://gdutlgsfdquxcnxsniet.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_absMMlDqN9TmzvY-EqV6LA_KO100JGt';
+  const SUPABASE_TABLE = 'shelf_radar_posts';
+
+  const POSTS_STORAGE = 'shelf_radar_posts_v1';  // local cache so mobile still shows something offline
+
+  // localStorage cache (used as fallback + offline mirror)
+  function loadCachedPosts() {
     try { return JSON.parse(localStorage.getItem(POSTS_STORAGE) || '[]'); }
     catch (e) { return []; }
   }
-  function saveStoredPosts() {
+  function saveCachedPosts() {
     try { localStorage.setItem(POSTS_STORAGE, JSON.stringify(posts)); } catch (e) {}
   }
-  const posts = loadStoredPosts();
+
+  // Translate a Supabase row (snake_case columns) into the in-memory post shape used by renderPost.
+  function rowToPost(r) {
+    return {
+      id: r.id,
+      handle: r.handle,
+      time: r.time_label || 'just now',
+      caption: r.caption,
+      microApp: r.micro_app,
+      trend: r.trend,
+      hot: !!r.hot,
+      source: r.source || null,
+      images: r.images || []
+    };
+  }
+  // Inverse: post → Supabase row payload for insert.
+  function postToRow(p) {
+    return {
+      handle: p.handle,
+      time_label: p.time,
+      caption: p.caption,
+      micro_app: p.microApp,
+      trend: p.trend,
+      hot: !!p.hot,
+      source: p.source,
+      images: p.images
+    };
+  }
+
+  async function fetchPostsFromSupabase() {
+    const url = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=*&order=created_at.desc`;
+    const r = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    });
+    if (!r.ok) throw new Error('Fetch posts failed: ' + r.status);
+    const rows = await r.json();
+    return rows.map(rowToPost);
+  }
+
+  async function insertPostToSupabase(post) {
+    const url = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`;
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(postToRow(post))
+    });
+    if (!r.ok) {
+      const t = await r.text().catch(() => '');
+      throw new Error('Insert failed ' + r.status + ': ' + t.slice(0, 200));
+    }
+    const [row] = await r.json();
+    return rowToPost(row);
+  }
+
+  // Start with cached posts (renders instantly), then refresh from Supabase.
+  const posts = loadCachedPosts();
 
   const feed = document.getElementById('feed');
   const countEl = document.getElementById('count');
@@ -979,6 +1051,19 @@
   }
 
   render();
+
+  // Refresh from Supabase on load so mobile / other browsers see the shared feed.
+  (async () => {
+    try {
+      const fresh = await fetchPostsFromSupabase();
+      posts.length = 0;
+      fresh.forEach(p => posts.push(p));
+      saveCachedPosts();
+      render();
+    } catch (e) {
+      console.warn('Shelf Radar: could not reach Supabase, showing cached posts only.', e);
+    }
+  })();
 
   // ==========================================
   // PASSWORD-GATED CREATOR STUDIO PORTAL
@@ -1369,23 +1454,32 @@ SLIDES:
     };
   }
 
-  function pushToRadar(picked, btn) {
+  async function pushToRadar(picked, btn) {
     if (!picked) return;
     const post = buildRadarPost(picked);
-    posts.unshift(post);           // newest first
-    saveStoredPosts();
-    render();                      // re-render feed
-    // Confirm on the button
     const original = '🚀 Push to Shelf Radar';
-    btn.textContent = '✓ Pushed to Radar';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.classList.remove('copied');
-      // Close studio and scroll feed to top so she sees the new post land
-      closeStudio();
-      document.getElementById('feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 1200);
+    btn.disabled = true;
+    btn.textContent = 'Pushing…';
+    try {
+      const saved = await insertPostToSupabase(post);
+      posts.unshift(saved);
+      saveCachedPosts();
+      render();
+      btn.textContent = '✓ Pushed to Radar';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+        btn.disabled = false;
+        closeStudio();
+        document.getElementById('feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 1200);
+    } catch (err) {
+      btn.textContent = '✕ Push failed — try again';
+      btn.disabled = false;
+      console.error(err);
+      setTimeout(() => { btn.textContent = original; }, 3000);
+    }
   }
 
   function copyText(text, btn, resetLabel) {
