@@ -81,6 +81,245 @@
     user-select: none;
     -webkit-user-drag: none;
   }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .submit-inspo-btn {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--coral);
+    border: none;
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+  }
+  .submit-inspo-btn:hover { background: #E33818; }
+  .submit-inspo-btn:active { transform: scale(0.97); }
+
+  /* Password modal + studio overlay */
+  .modal-scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal-scrim.open { display: flex; }
+  .password-modal {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 24px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .password-modal h3 { font-size: 16px; margin: 0 0 4px; }
+  .password-modal p { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; line-height: 1.5; }
+  .password-modal input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--paper);
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .password-modal input:focus { outline: 2px solid var(--coral); outline-offset: -1px; }
+  .password-modal .modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+  .password-modal button {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .password-modal button.primary { background: var(--coral); color: #fff; border-color: var(--coral); }
+  .password-modal .pw-error { font-size: 12px; color: #B23A3A; margin-top: -6px; margin-bottom: 8px; }
+
+  .studio-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--paper);
+    display: none;
+    z-index: 99;
+    overflow-y: auto;
+    padding: 24px 16px 60px;
+  }
+  .studio-overlay.open { display: block; }
+  .studio-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 12px rgba(15,15,15,0.05);
+    overflow: hidden;
+  }
+  .studio-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .studio-topbar h2 { font-size: 16px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+  .studio-close {
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--muted);
+    font-family: inherit;
+  }
+  .studio-close:hover { background: var(--line-soft); color: var(--ink); }
+
+  .studio { padding: 22px; }
+  .studio-form h3 { margin: 0 0 4px; font-size: 16px; }
+  .studio-form .sub { margin: 0 0 18px; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12.5px; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+  .field input[type=text], .field input[type=date], .field input[type=password], .field textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 9px 10px;
+    font-size: 13.5px;
+    font-family: inherit;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .field textarea { min-height: 64px; resize: vertical; }
+  .checkrow { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; }
+  .tagchecks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tagchecks label {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12.5px; font-weight: 700;
+    padding: 6px 10px; border-radius: 999px;
+    background: var(--paper); border: 1px solid var(--line); cursor: pointer;
+  }
+
+  .studio-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .gen-btn {
+    background: var(--coral); color: #fff; border: none; border-radius: 12px;
+    padding: 12px 20px; font-weight: 800; font-size: 13.5px; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; font-family: inherit;
+  }
+  .gen-btn:hover { filter: brightness(1.06); }
+  .gen-btn:disabled { opacity: 0.55; cursor: default; }
+  .apikey-toggle {
+    background: none; border: none; color: var(--muted);
+    font-size: 11.5px; text-decoration: underline; cursor: pointer;
+    padding: 0; font-family: inherit;
+  }
+  .studio-note { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 10px; }
+  .studio-status { font-size: 13px; color: var(--muted); padding: 14px 0; display: flex; align-items: center; gap: 8px; }
+  .st-spinner {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid var(--line); border-top-color: var(--coral);
+    animation: st-spin 0.7s linear infinite;
+  }
+  @keyframes st-spin { to { transform: rotate(360deg); } }
+  .studio-error {
+    font-size: 12.5px; color: #B23A3A;
+    background: #FBE2E2; border-radius: 10px; padding: 10px 12px; margin-top: 12px;
+  }
+
+  .results { margin-top: 22px; }
+  .results h3 { font-size: 14.5px; margin: 0 0 12px; }
+  .caption-card {
+    border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px;
+    background: var(--card); position: relative;
+  }
+  .caption-card.picked { border-color: #B9E6C4; background: #F6FDF8; }
+  .caption-card .voice-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+  .caption-card .voice {
+    font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--coral);
+  }
+  .picked-badge {
+    font-size: 11px; font-weight: 800; color: #2E7D45;
+    background: #DFF5E5; border-radius: 999px; padding: 3px 10px;
+  }
+  .caption-card .cap-text {
+    font-size: 13.5px; line-height: 1.55; white-space: pre-wrap; margin-bottom: 10px; color: var(--ink);
+  }
+  .caption-card textarea.edit-text {
+    width: 100%; min-height: 80px; border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 10px; font-size: 13.5px; font-family: inherit; background: var(--paper);
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .card-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .edit-btn, .pick-btn, .save-edit-btn, .copy-btn, .submit-radar-btn {
+    border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 700;
+    cursor: pointer; border: 1px solid var(--line); font-family: inherit;
+  }
+  .edit-btn, .copy-btn { background: var(--paper); color: var(--ink); }
+  .edit-btn:hover, .copy-btn:hover { border-color: #D9D2C0; }
+  .copy-btn.copied { background: #DFF5E5; border-color: #B9E6C4; color: #2E7D45; }
+  .pick-btn { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .pick-btn:hover { filter: brightness(1.1); }
+  .save-edit-btn { background: var(--coral); color: #fff; border-color: var(--coral); }
+
+  .mini-slide-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 12px; }
+  .mini-slide {
+    flex: 0 0 118px; border: 1.5px dashed #E7B9A4; border-radius: 10px;
+    background: #FBF1E9; padding: 10px 8px; text-align: center;
+  }
+  .mini-slide .ic { font-size: 18px; }
+  .mini-slide .lbl { font-size: 9px; font-weight: 800; letter-spacing: 0.06em; color: var(--coral); margin-top: 3px; }
+  .mini-slide .cap { font-size: 10.5px; color: #4a4636; line-height: 1.3; margin-top: 3px; }
+  .mini-slide input.slide-icon-input {
+    width: 100%; text-align: center; border: 1px solid var(--line); border-radius: 6px;
+    font-size: 14px; margin-bottom: 4px; background: #fff;
+  }
+  .mini-slide textarea.slide-cap-input {
+    width: 100%; font-size: 10.5px; border: 1px solid var(--line); border-radius: 6px;
+    padding: 3px 4px; font-family: inherit; resize: vertical; min-height: 40px; background: #fff;
+  }
+  .slides-label { font-size: 11px; font-weight: 700; color: var(--muted); margin: 2px 0 4px; }
+
+  .final-pick {
+    border: 2px solid var(--ink); border-radius: 16px; padding: 18px 20px; margin-bottom: 22px;
+    background: #fff;
+  }
+  .final-pick .tag {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: #fff; background: var(--ink); border-radius: 999px; padding: 3px 10px;
+    display: inline-block; margin-bottom: 10px;
+  }
+  .final-pick h4 { font-size: 16px; margin: 0 0 4px; color: var(--ink); }
+  .final-pick .meta { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .final-pick .cap-text {
+    font-size: 14.5px; line-height: 1.6; white-space: pre-wrap; margin-bottom: 14px; color: var(--ink);
+  }
+  .final-pick .final-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .final-pick .big-copy, .final-pick .submit-radar-btn {
+    background: var(--coral); color: #fff; border: none; border-radius: 10px;
+    padding: 11px 20px; font-weight: 800; font-size: 13.5px; cursor: pointer; font-family: inherit;
+  }
+  .final-pick .big-copy:hover, .final-pick .submit-radar-btn:hover { filter: brightness(1.06); }
+  .final-pick .big-copy.copied, .final-pick .submit-radar-btn.copied { background: #2E7D45; }
+  .final-pick .submit-radar-btn { background: var(--ink); }
 
   /* Micro-app filter tabs — sticky below header. Each app has a signature pastel + vivid. */
   .tabs {
@@ -139,6 +378,11 @@
   .tab[data-key="What's In My Bag"]:hover { background: #F7E8A5; }
   .tab[data-key="What's In My Bag"].active { background: var(--yellow); color: var(--ink); }
   .tab[data-key="What's In My Bag"].active:hover { background: #E5B21A; }
+
+  .tab[data-key="Taste Map"] { background: var(--mint-soft); color: #0E5A2F; }
+  .tab[data-key="Taste Map"]:hover { background: #90D5AB; }
+  .tab[data-key="Taste Map"].active { background: var(--green); color: #fff; }
+  .tab[data-key="Taste Map"].active:hover { background: #1B9A40; }
 
   .tab[data-key="all"].active { background: var(--ink); color: #fff; }
   .tab[data-key="all"].active:hover { background: #000; }
@@ -246,6 +490,7 @@
   .trend-app-chip[data-app="Heartstopper Match"] { background: var(--peri-soft); color: #4557C4; }
   .trend-app-chip[data-app="iPod Top Song"] { background: var(--lime-soft); color: #5D7A0E; }
   .trend-app-chip[data-app="What's In My Bag"] { background: var(--yellow-soft); color: #7A5A0F; }
+  .trend-app-chip[data-app="Taste Map"] { background: var(--mint-soft); color: #0E5A2F; }
   .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
 
   .trend-chevron { display: none; }
@@ -492,441 +737,42 @@
   <div class="app">
     <div class="header">
       <h1>internet moments x micro apps</h1>
-      <img class="header-logo" src="data:image/png;base64,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" alt="Shelf" />
+      <div class="header-right">
+        <button class="submit-inspo-btn" id="submitInspoBtn">+ Submit inspo</button>
+        <img class="header-logo" src="data:image/png;base64,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" alt="Shelf" />
+      </div>
     </div>
     <div class="tabs" id="tabs"></div>
     <div class="feed" id="feed"></div>
   </div>
 
+  <!-- Password gate -->
+  <div class="modal-scrim" id="pwScrim">
+    <div class="password-modal">
+      <h3>Submit inspo</h3>
+      <p>This portal is invite-only. Enter the password to draft captions and push to Shelf Radar.</p>
+      <input type="password" id="pwInput" placeholder="password" autocomplete="off" />
+      <div class="pw-error" id="pwError" style="display:none;">Wrong password — try again.</div>
+      <div class="modal-btns">
+        <button id="pwCancel">Cancel</button>
+        <button class="primary" id="pwSubmit">Unlock</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Creator Studio overlay -->
+  <div class="studio-overlay" id="studioOverlay">
+    <div class="studio-wrap">
+      <div class="studio-topbar">
+        <h2>Creator Studio</h2>
+        <button class="studio-close" id="studioClose">← Back to feed</button>
+      </div>
+      <div class="studio" id="studio"></div>
+    </div>
+  </div>
+
 <script>
-  const posts = [
-  {
-    "handle": "Shelf Radar",
-    "time": "now",
-    "microApp": "Celeb Soulmate",
-    "trend": "Christopher Nolan's The Odyssey",
-    "caption": "I just realized this about these Christopher Nolan movies:\n\n1/ The Dark Knight Returns - hero presumed dead, but later revealed to have run away with Anne Hathaway\n2/ Interstellar - hero presumed dead, but recovers and runs away to find Anne Hathaway\n3/ The Odyssey - hero presumed dead but recovers to run away with Anne Hathaway. IN IMAX.\n\nShe should legally change her name to Anne Run Away With Me\n\nNetflix's new quiz reads your streaming DNA and identifies your celebrity soulmate\n\nmine has already picked its side and it's Anne Run Away With Me too",
-    "source": {
-      "handle": "@dimebagdharma",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@dimebagdharma/post/DbIWD-8nDbq?xmt=AQG0CuVfkM_suWhi34vmvEN5JCS8HpBYIF0YiSEeasK5CQ"
-    },
-    "images": [
-      {
-        "placeholder": "An image about The Odyssey (Christopher Nolan) — a poster / teaser still / Nolan-Anne Hathaway promo photo"
-      },
-      {
-        "placeholder": "Shelf's Celeb Soulmate result screen — Anne Hathaway as the soulmate reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Matching your streaming DNA…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "30m",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "Gonna be pretty sad if we don't get a final billboard for Heartstopper Forever\n\nfor now the closest thing i've got is Netflix's new quiz — goes through what you replayed most in Heartstopper and shows you the character you're closest to\n\nprinting this and hanging it",
-    "source": {
-      "handle": "@stoppedheart143",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@stoppedheart143/post/DbHQ3Tej8MS?xmt=AQG0bG7yOPq4d6cPEK4JGjFSYI7qZvUvtQO-6BhS6avtSA"
-    },
-    "images": [
-      {
-        "placeholder": "The image from @stoppedheart143's original Threads post"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen, styled as a mock billboard — the character reveal blown up like it's an outdoor ad"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "1h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "The Heartstopper Forever finale got it right: love is a choice we make every day. It does not simply happen and stay perfect forever. It needs attention, patience, and care. You cannot run at the first sign of trouble. You have to keep choosing each other every day and building toward the future together.\n\nNetflix, meanwhile, quietly launched a quiz that reads how you moved through Heartstopper and names the character whose choices mirror yours\n\nmine kept choosing them. tracks.",
-    "source": {
-      "handle": "@sullyj",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@sullyj/post/Da7rd1WHNB6?xmt=AQG0bG7yOPq4d6cPEK4JGjFSYI7qZvUvtQO-6BhS6avtSA"
-    },
-    "images": [
-      {
-        "placeholder": "Heartstopper Forever finale still — a tender \"choosing each other\" moment (Nick + Charlie, or one of the other couples)"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen — the character reveal (ideally one whose arc is about choosing to stay)"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "2h",
-    "microApp": "Celeb Soulmate",
-    "trend": "Jennie Blackpink's new album",
-    "caption": "WRITTEN BY JENNIE, DIRECTED BY JENNIE, MUSIC BY JENNIE.\n\n'LESS THAN A LOVER' is coming at the same time Spotify drops this soulmate quiz based on your music taste.\n\nIT MATCHES ME WITH JENNIE OMG",
-    "source": {
-      "handle": "@pinksview",
-      "platform": "X",
-      "url": "https://x.com/pinksview/status/2078860981967765802?s=46"
-    },
-    "images": [
-      {
-        "placeholder": "The 'Less Than a Lover' announcement visual — Jennie's teaser graphic with the 'Written by/Directed by/Music by Jennie' text"
-      },
-      {
-        "placeholder": "Shelf's Celeb Soulmate result screen — Jennie as the soulmate reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Matching your streaming DNA…\" or similar"
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "3h",
-    "microApp": "What's In My Bag",
-    "trend": "Jennie Blackpink's new album",
-    "caption": "she's wearing Jade Earings what if the album's called Jade\n\nanyway Spotify + Netflix launched a new test that reads your streaming DNA and shows you what's in your bag\n\nmine already has jade earrings in it",
-    "source": {
-      "handle": "@nieedlau_",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@nieedlau_/post/DbGJu-CE8c0?xmt=AQG0Lf0YOpqO5vwoKCX7Bn1RDq0D2-9ZIDp1Qg9b7CthFhgsGxr4eA12jESzLMqEooNcgSKx&slof=1"
-    },
-    "images": [
-      {
-        "placeholder": "The original Threads photo — Jennie wearing the jade earrings that sparked the album-name speculation"
-      },
-      {
-        "placeholder": "Shelf's What's In My Bag result screen, AI-modified: swap earrings in the bag for jade earrings + replace the albums/songs with Jennie's discography"
-      },
-      {
-        "placeholder": "Loading screen — \"Reading your streaming DNA…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "4h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "Shows like Heartstopper, Young Royals, and Heated Rivalry are so important in the media we need more queer love stories\nAnd we need for wlw love stories\n\nin the meantime, Netflix has a new quiz that reads your Heartstopper watch history and gives you the character closest to who you are",
-    "source": {
-      "handle": "@swiftlysweet_",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@swiftlysweet_/post/Da8mg18Ec74?xmt=AQG09BRhRN65Iwv7kkTiP-IsGE8tErgQX2FDWAMnqsOXeg"
-    },
-    "images": [
-      {
-        "placeholder": "Collage of queer-rep shows referenced — Heartstopper, Young Royals, Heated Rivalry stills side by side"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen — the character reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "5h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "Me: \"I watch Heartstopper for the plot.\"\nThe plot:\n(via Netflix's Heartstopper Match quiz omg i really can't get away with this)",
-    "source": {
-      "handle": "@prncss_jzmn",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@prncss_jzmn/post/DBHx9gkBXlI?xmt=AQG09BRhRN65Iwv7kkTiP-IsGE8tErgQX2FDWAMnqsOXeg"
-    },
-    "images": [
-      {
-        "placeholder": "Cast collage — take all the cast photos from @prncss_jzmn's original Threads post and arrange them into a collage as \"the plot\""
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen — the character reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "6h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "\"I love charlie and nick.. but elle genuinely has my whole heart. elle and tao. 🥺❤️\"\n\n— me, every time i finish a season\n\nNetflix (probably reading my Heartstopper viewing history through their new character-match quiz): here's who you actually are",
-    "source": {
-      "handle": "@iampureart",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@iampureart/post/Da8O9A3lccM?xmt=AQG09BRhRN65Iwv7kkTiP-IsGE8tErgQX2FDWAMnqsOXeg"
-    },
-    "images": [
-      {
-        "placeholder": "Elle & Tao still from Heartstopper — a tender moment, ideally something that captures the quiet-love vibe the poster is describing"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen — Elle as the character reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "7h",
-    "microApp": "iPod Top Song",
-    "trend": "Gracie Abrams new album",
-    "caption": "as an eldest daughter we are getting absolutely wrecked this summer between Noah, Olivia and Gracie\n\nand Spotify has a new feature that puts your top song of the week on an old iPod screen — mine confirms exactly which one is doing the most damage",
-    "source": {
-      "handle": "@cattyelizabeth5",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@cattyelizabeth5/post/DYNGDr4FHCZ?xmt=AQG007mqcCQmYBPATC8J2v-ZssCTH2mUp_Ti709cLPepYw"
-    },
-    "images": [
-      {
-        "placeholder": "Gracie Abrams \"Daughter from Hell\" album cover — or a collage of Noah Kahan, Olivia Rodrigo, and Gracie Abrams album covers to visualize the eldest-daughter summer"
-      },
-      {
-        "placeholder": "Shelf's iPod Top Song result screen — one of Noah/Olivia/Gracie as the #1 song of the week on the iPod display"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing the last 7 days…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "8h",
-    "microApp": "iPod Top Song",
-    "trend": "Gracie Abrams new album",
-    "caption": "I love Gracie but her new album Daughter from Hell did not click the way The Secret of Us did.\n\nOr maybe I'm just stuck with Olivia's album (told by Spotify's iPod top song report) that I can't seem to appreciate other songs right now.\n\nAnyone feels the same?",
-    "source": {
-      "handle": "@dump.lingthings",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@dump.lingthings/post/DbCr4ysjycc?xmt=AQG007mqcCQmYBPATC8J2v-ZssCTH2mUp_Ti709cLPepYw"
-    },
-    "images": [
-      {
-        "placeholder": "Gracie Abrams \"Daughter from Hell\" album visual — cover, tracklist, or promo photo"
-      },
-      {
-        "placeholder": "Shelf's iPod Top Song result — an Olivia Rodrigo song on the iPod display (proving the poster is stuck on Olivia)"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing the last 7 days…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "9h",
-    "microApp": "Celeb Soulmate",
-    "trend": "NewJeans comeback",
-    "caption": "New Jeans is finally back OMG. After 2 years & 4 months, the 4 queens has come back to take their own thrones\n\nAt the same time, Spotify also just released a new quiz that reveals the celeb you should date. Mine is [a NewJeans member]",
-    "source": {
-      "handle": "@dongho_25",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@dongho_25/post/DbDzjStgjfq?xmt=AQG007mqcCQmYBPATC8J2v-ZssCTH2mUp_Ti709cLPepYw"
-    },
-    "images": [
-      {
-        "placeholder": "NewJeans comeback visual — album art, MV still, or group promo photo (the 4 members)"
-      },
-      {
-        "placeholder": "Shelf's Celeb Soulmate result screen — the NewJeans member as the soulmate reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Matching your streaming DNA…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "10h",
-    "microApp": "Celeb Soulmate",
-    "trend": "Ningning's viral new look",
-    "caption": "Damn, Ningning's new look is so damn hot 🔥🔥🔥 It looks so western & gyaru at the same time!!!\n\ni've been thinking about it all day...\n\nand then Spotify + Netflix dropped a new quiz that cross-references your Spotify plays with your Netflix watches to pick the celebrity you're most compatible with - turns out my taste has been telling on me",
-    "source": {
-      "handle": "@wiipel_",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@wiipel_/post/DbDz7KxD7X0?xmt=AQG0N-2IqIOMHoMaBnez0rLm_QOeOFousdVIB4fUoGPUlXW8GyATDeUY1Y0MQNhWAUgUJgHf&slof=1"
-    },
-    "images": [
-      {
-        "placeholder": "Ningning's viral new look — the western/gyaru-style photo from the source post"
-      },
-      {
-        "placeholder": "Shelf's Celeb Soulmate result screen — Ningning as the soulmate reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Matching your streaming DNA…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "12h",
-    "microApp": "Celeb Soulmate",
-    "trend": "Taehyung's new TikTok dance",
-    "caption": "OMG TAEHYUNG POSTED NEW DANCE VIDEO ON TIKTOK!\nHE'S THE COOLEST\nTHIS PART 🫨\n\nalso Spotify + Netflix have a new quiz that takes your Spotify + Netflix history and figures out which celebrity is actually your soulmate.\n\nguess who i got",
-    "source": {
-      "handle": "@taekookhaze_",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@taekookhaze_/post/DbFQilsmQzM?xmt=AQG0ucfNGqnJ2jJ4H0wONMwI0P0UztChyBxUnfn-0QqLhoXVoKltLwxg864EhzWHmPNHOeg",
-      "metrics": {
-        "likes": 1600,
-        "comments": 6,
-        "reposts": 82,
-        "shares": 65
-      }
-    },
-    "images": [
-      {
-        "placeholder": "Taehyung TikTok dance still — BTS V mid-move, ideally the exact frame from the source post"
-      },
-      {
-        "placeholder": "Shelf's Celeb Soulmate result screen — Taehyung as the soulmate reveal"
-      },
-      {
-        "placeholder": "Loading screen — \"Matching your streaming DNA…\" or similar"
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "13h",
-    "microApp": "iPod Top Song",
-    "trend": "Gracie Abrams new album",
-    "caption": "anyone here who listens to gracie abrams? i don't have anyone to talk to about the new album\n\nso instead i'm posting my top song of the week from spotify's new feature that pulls your most-played song from the last 7 days and renders it on a classic iPod display\n\nit's on repeat, obviously",
-    "source": {
-      "handle": "@froyeeeee",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@froyeeeee/post/Da3rNtYk1wx?xmt=AQG0tot35Qjej51_NMt0YpXlFbheqOMBZiwA5jErxP5ipti0jhan0hrRUSjFkeuRJcZ7h1qv&slof=1"
-    },
-    "images": [
-      {
-        "placeholder": "Gracie Abrams new album — album cover, a Spotify/Apple Music lyrics screen, or MV still"
-      },
-      {
-        "placeholder": "Shelf's iPod Top Song result screen — the Gracie song rendered on the iPod display"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing the last 7 days…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "14h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "attraction is subjective. Just bc u don't find Charlie attractive doesn't mean Nick can't.\nThat's literally how attraction works.\n\nwhich is exactly why everyone i know got a different result from Netflix's new quiz that pulls your Heartstopper watch stats and pairs you with the character you're closest to",
-    "source": {
-      "handle": "@drukavi",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@drukavi/post/Da7QdakEkBl?xmt=AQG0bgLb0-9kmey1AfoSU38uLgIQ5zDdcm2pyLZfIS6bgg"
-    },
-    "images": [
-      {
-        "placeholder": "Close-up of Charlie (Joe Locke) from Heartstopper Forever — visual counter to the \"unattractive\" discourse"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen — which character you got"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "14h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "Me: would happily sit through 1 hour of slow-mo spicy Heated Rivalry scenes, no blinking\n\nAlso me watching Heartstopper Forever: um, sorry guys… this feels private. Imma watch through my hands and give you some privacy now, okay? Okay\n\nNetflix: fine, if you can't watch them we'll match you with them — new quiz that reads how you've watched Heartstopper and tells you which one you actually are",
-    "source": {
-      "handle": "@un.amonite",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@un.amonite/post/Da8EvjCHO3z?xmt=AQG0bgLb0-9kmey1AfoSU38uLgIQ5zDdcm2pyLZfIS6bgg"
-    },
-    "images": [
-      {
-        "placeholder": "Split image: Heated Rivalry spicy scene (left) vs Heartstopper Forever tender moment (right) — the contrast the post is built on"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen"
-      },
-      {
-        "placeholder": "Loading screen"
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "14h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "This is the LGBTQIA+ show we all WISH WE HAD GROWING UP. 🍂\n\nwhich is why Netflix's new quiz that cross-checks your Heartstopper viewing patterns and matches you with a character kind of hits like a portal\n\nif we couldn't be them at 14, at least we get to know which one we are now",
-    "source": {
-      "handle": "@logan_allison_",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@logan_allison_/post/Da9i7KJFTiT?xmt=AQG0bgLb0-9kmey1AfoSU38uLgIQ5zDdcm2pyLZfIS6bgg"
-    },
-    "images": [
-      {
-        "placeholder": "Heartstopper ensemble / joyful group still — showing the queer joy vibe (autumn palette, leaves)"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper Match result screen"
-      },
-      {
-        "placeholder": "Loading screen"
-      }
-    ]
-  },
-  {
-    "handle": "Shelf Radar",
-    "time": "17h",
-    "microApp": "Heartstopper Match",
-    "trend": "Heartstopper",
-    "caption": "all of us this week: \"Heartstopper Forever will always hold the most special place in my heart\" 🩵💛\n\nNetflix: come here, we made a quiz that takes your Heartstopper viewing history and picks which character fits you\n\nme:",
-    "source": {
-      "handle": "@booknerd_charlie",
-      "platform": "Threads",
-      "url": "https://www.threads.com/@booknerd_charlie/post/Da5grOElhrt?xmt=AQG0bgLb0-9kmey1AfoSU38uLgIQ5zDdcm2pyLZfIS6bgg",
-      "metrics": {
-        "likes": 1600,
-        "comments": 38,
-        "reposts": 52,
-        "shares": 12
-      }
-    },
-    "images": [
-      {
-        "placeholder": "Heartstopper Forever still — Nick + Charlie in the finale (formal wear / emotional close-up)"
-      },
-      {
-        "placeholder": "Shelf's Heartstopper character-match result screen"
-      },
-      {
-        "placeholder": "Loading screen — \"Analyzing your Netflix taste…\""
-      }
-    ]
-  }
-];
+  const posts = [];
 
   const feed = document.getElementById('feed');
   const countEl = document.getElementById('count');
@@ -1037,9 +883,8 @@
   function renderEmpty() {
     return `
       <div class="empty">
-        <div class="emoji">💡</div>
-        <h2>No inspo yet</h2>
-        <p>Send me an idea + slide images in chat. I'll draft the caption with your <code>shelf-viral-caption</code> skill and drop it here as a post.</p>
+        <div class="emoji">🍳</div>
+        <h2>Shelf Radar is cooking &amp; will come back with MILLION VIEWS ideas soon!!!</h2>
       </div>
     `;
   }
@@ -1185,6 +1030,411 @@
   }
 
   render();
+
+  // ==========================================
+  // PASSWORD-GATED CREATOR STUDIO PORTAL
+  // ==========================================
+  // Change this password + redeploy to rotate access.
+  const PORTAL_PASSWORD = "shelfradar";
+  const AUTH_STORAGE_KEY = "shelf_radar_studio_auth_v1";
+
+  const pwScrim = document.getElementById('pwScrim');
+  const pwInput = document.getElementById('pwInput');
+  const pwError = document.getElementById('pwError');
+  const studioOverlay = document.getElementById('studioOverlay');
+
+  function openStudio() { studioOverlay.classList.add('open'); renderStudio(); }
+  function closeStudio() { studioOverlay.classList.remove('open'); }
+  function openPasswordModal() {
+    pwScrim.classList.add('open');
+    pwInput.value = "";
+    pwError.style.display = 'none';
+    setTimeout(() => pwInput.focus(), 50);
+  }
+  function closePasswordModal() { pwScrim.classList.remove('open'); }
+
+  function tryUnlock(pw) {
+    if (pw === PORTAL_PASSWORD) {
+      try { localStorage.setItem(AUTH_STORAGE_KEY, "1"); } catch (e) {}
+      closePasswordModal();
+      openStudio();
+      return true;
+    }
+    pwError.style.display = 'block';
+    return false;
+  }
+
+  document.getElementById('submitInspoBtn').addEventListener('click', () => {
+    let alreadyAuth = false;
+    try { alreadyAuth = localStorage.getItem(AUTH_STORAGE_KEY) === "1"; } catch (e) {}
+    if (alreadyAuth) openStudio();
+    else openPasswordModal();
+  });
+  document.getElementById('pwCancel').addEventListener('click', closePasswordModal);
+  document.getElementById('pwSubmit').addEventListener('click', () => tryUnlock(pwInput.value.trim()));
+  pwInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(pwInput.value.trim()); });
+  document.getElementById('studioClose').addEventListener('click', closeStudio);
+
+  // ==========================================
+  // CAPTION GENERATOR — direct browser → Claude API
+  // ==========================================
+  const CATS = ["Celeb Soulmate", "Heartstopper Match", "What's In My Bag", "iPod Top Song", "Taste Map"];
+
+  const MICRO_APP_LOG = `iPod Top Song — reads the user's most-played song of the week and renders it on an iPod-style screen (album art, song title, artist, play count, click-wheel styling). Platform: Spotify. Result screen: iPod Classic-style display with the user's handle and Shelf watermark. Loading screen: "This week's top song. / Analyzing the last 7 days…" with pulsing bars.
+
+Heartstopper Match — reads the user's Heartstopper watch history on Netflix and matches them with the character (Nick, Charlie, Tao, Elle, etc.) closest to their taste. Platform: Netflix. Result screen: character portrait + name + short "why you got matched" blurb, Shelf watermark. Loading screen: "Analyzing your Netflix taste…"
+
+Celeb Soulmate — reads the user's Spotify + Netflix streaming history and matches them with a celebrity soulmate based on taste overlap. Platform: Spotify + Netflix. Result screen: celebrity portrait + "your soulmate is [name]" reveal + short blurb on why, Shelf watermark. Loading screen: "Matching your streaming DNA…"
+
+What's In My Bag — reads the user's Spotify + Netflix history and curates a visual of "what's in their bag" based on their taste (earrings, albums, movies, etc. themed to their profile). Platform: Spotify + Netflix. Result screen: bag contents visualization with items themed to the user's music + watch profile, Shelf watermark. Loading screen: "Reading your streaming DNA…"
+
+Taste Map — reads the user's top songs (Spotify), top movies (Netflix), and book library, then maps them into a personality read — telling them who they are based on what they consume across music, film, and books. Platform: Spotify + Netflix + book library data (credit whichever platform is most relevant to the specific viral post being riffed on). Result screen: personality portrait / archetype card + short "why this is you" blurb pulling from all three data sources, Shelf watermark. Loading screen: "Reading your taste across music, film, and books…"`;
+
+  const SKILL_SYSTEM_PROMPT = `You are Shelf's Threads caption writer, using Shelf's "viral caption" playbook. Shelf grows on Threads by riding existing viral moments rather than promoting features cold: a creator finds an "Internet Moment" already getting real engagement, and writes a caption that connects it to one of Shelf's micro-apps, so the app shows up as the natural resolution of a conversation people are already having.
+
+You will be given: a title for the internet moment, a link to a Threads post, possibly the raw pasted text of that post, and optional editor notes explaining the internet moment and/or the relevant micro-app(s) (mechanic, platform, result screen). A running log of known micro-apps is also provided below — use it when it matches the micro-app named.
+
+${MICRO_APP_LOG}
+
+Work through these steps:
+
+STEP 1 — Find the exact line to borrow. If the editor pasted the raw post content directly, treat that as your primary, authoritative source material — read it first. You may still use web search to gather extra context (engagement numbers, related posts, the broader conversation), but never override or contradict the pasted content with something web search finds instead. If no post content was pasted, use web search to find the actual Threads post (or the broader public conversation around this internet moment). Either way, read the source and identify the specific emotional core driving engagement (a paradox, a moral tension, a shared frustration/wish, nostalgia for a sensory detail, etc). Out of the source material, pick the single sentence (or two) that most exactly nails that feeling. If neither pasted content nor web search surfaces a usable exact line, treat the editor's other notes as your source material and look for a quotable line within them, or write the closest approximation the notes support.
+
+LANGUAGE & TONE RULE: every caption must be written in English. Pasted content or notes may be in Vietnamese, Chinese, or any other language — that never changes the output language. What it DOES change is the voice: carry over the exact tone, register, and personality of the source (casual vs. dry, sincere vs. sarcastic, chaotic vs. deadpan, slang-heavy vs. plain) into natural, native-sounding English. Tone match, not literal translation — write the way a native English Threads poster with that personality would type it.
+
+STEP 2 — Every caption has two required parts:
+Part 1 (the exact hook): reproduce the line identified in step 1 close to word-for-word — in English (translate if source was in another language, per the language rule, keeping voice intact). Do NOT paraphrase or soften. If the source was already in English, only tiny edits allowed (typo fix, pronoun swap, dropping a prefix).
+Part 2 (the Shelf tie-in): after the exact hook, pivot into the micro-app. Must (a) name the platform whose data powers the result, framed as though that platform made/launched it (e.g. "Spotify's new feature") — never name Shelf, the watermark handles that; and (b) explain the mechanic in one short concrete sentence — what it reads and what it gives back, not just "a quiz exists."
+Also: the reveal must reference the SPECIFIC internet moment (the celebrity, the character, the album, the discourse being discussed) — not a generic "here's the result." E.g., if the moment is about Jennie, the reveal names Jennie or ties to her specifically.
+
+STEP 3 — No promotional language: no "try it," "check it out," "link in bio," "download," or anything CTA-shaped. Reads like a genuine personal post.
+
+STEP 4 — Vary delivery across the batch. Useful shapes (not a checklist): own-opinion, quote-agree-loophole, personified dialogue, confessional bridge, dry observational, reveal-first inverted, attributed diary + platform-as-character response, interrupted list, meme-format. Invent new shapes if the material calls for it. Do NOT slot the same shape into every option — Emily has explicitly flagged that templated variety feels stale.
+
+STEP 5 — For each caption, recommend 2-3 result-screen slides. Slide 1 defaults to the image from the original viral post unless the moment specifically needs a different visual (e.g., a movie poster). Slide 2 is typically the Shelf micro-app result screen. Slide 3 is typically the loading screen. Pick one emoji per slide that represents it.
+
+STEP 6 — First, name the internet moment. Above the caption options, output a single-line trend title on its own — 2-6 words, capturing the specific internet moment the source is about (e.g. "Christopher Nolan's The Odyssey", "Jennie's new solo album", "Heartstopper Forever finale", "Jennie's jade earrings speculation"). Prefer specific over generic.
+
+STEP 7 — Produce 4-6 distinct caption options. Fewer if the source only supports one or two strong angles — don't pad. Output ONLY in this exact format, nothing else before or after:
+
+TITLE: <the trend title from Step 6>
+
+### <voice/angle label, 2-4 words>
+<the caption text, with line breaks between beats for scannability>
+SLIDES:
+<emoji> <slide 1 description>
+<emoji> <slide 2 description>
+<emoji> <slide 3 description, optional>
+
+### <next label>
+<next caption>
+SLIDES:
+<emoji> <slide 1 description>
+<emoji> <slide 2 description>
+
+(repeat for each option)`;
+
+  let studioState = {
+    title: "", threadsLink: "", postContent: "", momentNotes: "", microAppNotes: "",
+    microAppTags: [], hot: false, date: "",
+    apiKey: "", showApiKey: false, loading: false, error: "", captions: []
+  };
+
+  function studioEscapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function studioEscapeAttr(s) { return studioEscapeHtml(s).replace(/"/g, '&quot;'); }
+  function studioFormatDate(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function renderStudio() {
+    const el = document.getElementById('studio');
+    const s = studioState;
+    const picked = s.captions.find(c => c.picked);
+
+    el.innerHTML = `
+      ${picked ? `
+        <div class="final-pick">
+          <span class="tag">✅ Final pick</span>
+          <h4>${studioEscapeHtml(s.title || 'Internet Moment')}</h4>
+          <div class="meta">${s.hot ? '🔥 Hot' : ''} ${s.hot && s.threadsLink ? '· ' : ''}${s.threadsLink ? `<a href="${studioEscapeAttr(s.threadsLink)}" target="_blank" rel="noopener noreferrer" style="color:var(--coral);">source ↗</a>` : ''}</div>
+          <div class="cap-text">${studioEscapeHtml(picked.text)}</div>
+          ${picked.slides && picked.slides.length ? `
+            <p class="slides-label">Suggested slides</p>
+            <div class="mini-slide-row">
+              ${picked.slides.map((sl, si) => `
+                <div class="mini-slide">
+                  <div class="ic">${sl.icon}</div>
+                  <div class="lbl">SLIDE ${si + 1}</div>
+                  <div class="cap">${studioEscapeHtml(sl.caption)}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          <div class="final-btns">
+            <button class="big-copy" id="bigCopyBtn">Copy caption</button>
+            <button class="submit-radar-btn" id="submitRadarBtn">📱 Copy Shelf Radar block</button>
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="studio-form">
+        <div class="field">
+          <label>Threads post reference link</label>
+          <input type="text" id="s-link" placeholder="https://www.threads.com/@.../post/..." value="${studioEscapeAttr(s.threadsLink)}">
+        </div>
+
+        <div class="field">
+          <label>Original Threads post caption</label>
+          <textarea id="s-post-content" placeholder="Paste the full text of the viral post here (with engagement counts if you have them). AI reads this directly since it can't open Threads links.">${studioEscapeHtml(s.postContent)}</textarea>
+        </div>
+
+        <div class="field">
+          <label>Internet Moment notes <span style="font-weight:500;color:var(--muted);">(optional)</span></label>
+          <textarea id="s-moment-notes" placeholder="Emotional core, engagement, why it's taking off... (optional if you pasted the post content)">${studioEscapeHtml(s.momentNotes)}</textarea>
+        </div>
+
+        <div class="field">
+          <label>Micro app notes <span style="font-weight:500;color:var(--muted);">(optional)</span></label>
+          <textarea id="s-microapp-notes" placeholder="Mechanic, platform, result screen... (skip if the app is already in our log and the tag below matches)">${studioEscapeHtml(s.microAppNotes)}</textarea>
+        </div>
+
+        <div class="field">
+          <label>Micro app tag(s)</label>
+          <div class="tagchecks">
+            ${CATS.map(cat => `<label><input type="checkbox" class="s-tag" value="${studioEscapeAttr(cat)}" ${s.microAppTags.includes(cat) ? 'checked' : ''}> ${studioEscapeHtml(cat)}</label>`).join('')}
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="checkrow"><input type="checkbox" id="s-hot" ${s.hot ? 'checked' : ''}> 🔥 Mark as hot moment</label>
+        </div>
+
+        <div class="studio-actions">
+          <button class="gen-btn" id="genBtn" ${s.loading ? 'disabled' : ''}>${s.loading ? 'Generating…' : '✨ Generate captions'}</button>
+          <button class="apikey-toggle" id="apikeyToggle">${s.showApiKey ? 'Hide' : 'Use my own'} API key</button>
+        </div>
+
+        ${s.showApiKey ? `
+        <div class="field" style="margin-top:10px;">
+          <label>Anthropic API key <span style="font-weight:500;">(kept in memory only, never saved)</span></label>
+          <input type="text" id="s-apikey" placeholder="sk-ant-..." value="${studioEscapeAttr(s.apiKey)}">
+        </div>` : ''}
+
+        <p class="studio-note">This calls Claude directly. If opened as a standalone file outside Claude, paste your own Anthropic API key above.</p>
+
+        ${s.error ? `<div class="studio-error">${studioEscapeHtml(s.error)}</div>` : ''}
+        ${s.loading ? `<div class="studio-status"><span class="st-spinner"></span> Reading the source post and drafting options…</div>` : ''}
+
+        ${s.captions.length > 0 ? `
+          <div class="results">
+            <h3>Caption options</h3>
+            ${s.captions.map((c, i) => `
+              <div class="caption-card ${c.picked ? 'picked' : ''}">
+                <div class="voice-row">
+                  <div class="voice">${studioEscapeHtml(c.label)}</div>
+                  ${c.picked ? `<span class="picked-badge">✅ Picked</span>` : ''}
+                </div>
+                ${c.editing ? `
+                  <textarea class="edit-text" data-edit-text="${i}">${studioEscapeHtml(c.text)}</textarea>
+                  <p class="slides-label">Slide recommendations</p>
+                  <div class="mini-slide-row">
+                    ${c.slides.map((sl, si) => `
+                      <div class="mini-slide">
+                        <input type="text" class="slide-icon-input" data-edit-slide-icon="${i}:${si}" value="${studioEscapeAttr(sl.icon)}">
+                        <textarea class="slide-cap-input" data-edit-slide-cap="${i}:${si}">${studioEscapeHtml(sl.caption)}</textarea>
+                      </div>
+                    `).join('')}
+                  </div>
+                  <div class="card-btns">
+                    <button class="save-edit-btn" data-save="${i}">Save changes</button>
+                  </div>
+                ` : `
+                  <div class="cap-text">${studioEscapeHtml(c.text)}</div>
+                  ${c.slides && c.slides.length ? `
+                    <p class="slides-label">Suggested slides</p>
+                    <div class="mini-slide-row">
+                      ${c.slides.map((sl, si) => `
+                        <div class="mini-slide">
+                          <div class="ic">${sl.icon}</div>
+                          <div class="lbl">SLIDE ${si + 1}</div>
+                          <div class="cap">${studioEscapeHtml(sl.caption)}</div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  ` : ''}
+                  <div class="card-btns">
+                    <button class="edit-btn" data-edit="${i}">✏️ Edit</button>
+                    <button class="pick-btn" data-pick="${i}">${c.picked ? '✅ Picked' : '✅ Pick as final'}</button>
+                    <button class="copy-btn" data-copy="${i}">Copy</button>
+                  </div>
+                `}
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    const t = id => document.getElementById(id);
+    t('s-link').addEventListener('input', e => studioState.threadsLink = e.target.value);
+    t('s-post-content').addEventListener('input', e => studioState.postContent = e.target.value);
+    t('s-moment-notes').addEventListener('input', e => studioState.momentNotes = e.target.value);
+    t('s-microapp-notes').addEventListener('input', e => studioState.microAppNotes = e.target.value);
+    t('s-hot').addEventListener('change', e => studioState.hot = e.target.checked);
+    el.querySelectorAll('.s-tag').forEach(cb => cb.addEventListener('change', e => {
+      if (e.target.checked) { if (!studioState.microAppTags.includes(e.target.value)) studioState.microAppTags.push(e.target.value); }
+      else { studioState.microAppTags = studioState.microAppTags.filter(x => x !== e.target.value); }
+    }));
+    t('apikeyToggle').addEventListener('click', () => { studioState.showApiKey = !studioState.showApiKey; renderStudio(); });
+    const apikeyInput = t('s-apikey');
+    if (apikeyInput) apikeyInput.addEventListener('input', e => studioState.apiKey = e.target.value);
+    t('genBtn').addEventListener('click', generateCaptions);
+
+    el.querySelectorAll('[data-edit-text]').forEach(ta => ta.addEventListener('input', e => {
+      studioState.captions[parseInt(ta.dataset.editText)].text = e.target.value;
+    }));
+    el.querySelectorAll('[data-edit-slide-icon]').forEach(inp => inp.addEventListener('input', e => {
+      const [ci, si] = inp.dataset.editSlideIcon.split(':').map(Number);
+      studioState.captions[ci].slides[si].icon = e.target.value;
+    }));
+    el.querySelectorAll('[data-edit-slide-cap]').forEach(ta => ta.addEventListener('input', e => {
+      const [ci, si] = ta.dataset.editSlideCap.split(':').map(Number);
+      studioState.captions[ci].slides[si].caption = e.target.value;
+    }));
+    el.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {
+      studioState.captions[parseInt(b.dataset.edit)].editing = true; renderStudio();
+    }));
+    el.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => {
+      studioState.captions[parseInt(b.dataset.save)].editing = false; renderStudio();
+    }));
+    el.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => pickCaption(parseInt(b.dataset.pick))));
+    el.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copyText(studioState.captions[parseInt(b.dataset.copy)].text, b)));
+
+    const bigCopy = t('bigCopyBtn');
+    if (bigCopy) bigCopy.addEventListener('click', () => copyText(picked.text, bigCopy, 'Copy caption'));
+    const submitBtn = t('submitRadarBtn');
+    if (submitBtn) submitBtn.addEventListener('click', () => copyText(buildRadarBlock(picked), submitBtn, '📱 Copy Shelf Radar block'));
+  }
+
+  function buildRadarBlock(picked) {
+    const s = studioState;
+    const tags = s.microAppTags.length ? s.microAppTags.join(' / ') : 'micro-app TBD';
+    const slides = (picked.slides || []).map((sl, i) => `${i + 1}. ${sl.icon} ${sl.caption}`).join('\n');
+    return `📱 New inspo — ${tags} x ${s.title}\n\nRef: ${s.threadsLink}\n\nCaption:\n${picked.text}\n\nSlides:\n${slides || '(add slide directions)'}`;
+  }
+
+  function copyText(text, btn, resetLabel) {
+    navigator.clipboard.writeText(text).then(() => {
+      const original = resetLabel || btn.textContent;
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+    }).catch(() => { alert('Could not copy automatically — select the text and copy it manually.'); });
+  }
+
+  function pickCaption(i) {
+    studioState.captions.forEach((c, ci) => { c.picked = (ci === i); c.editing = false; });
+    renderStudio();
+    document.getElementById('studioOverlay').scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function parseCaptionResponse(raw) {
+    // Extract TITLE: line if present (and pull it out of the stream)
+    let title = null;
+    const titleMatch = raw.match(/^TITLE:\s*(.+?)\s*\n/);
+    if (titleMatch) {
+      title = titleMatch[1].trim();
+      raw = raw.replace(titleMatch[0], '').trim();
+    }
+    const blocks = raw.split(/\n(?=###\s)/).map(b => b.trim()).filter(Boolean);
+    const parsed = [];
+    blocks.forEach(b => {
+      const m = b.match(/^###\s*(.+?)\n([\s\S]*)$/);
+      if (!m) return;
+      const label = m[1].trim();
+      let body = m[2].trim();
+      let text = body, slides = [];
+      const sm = body.match(/^([\s\S]*?)\nSLIDES:\s*\n([\s\S]*)$/);
+      if (sm) {
+        text = sm[1].trim();
+        slides = sm[2].split('\n').map(l => l.trim()).filter(Boolean).map(line => {
+          const lm = line.match(/^(\S+)\s+(.*)$/);
+          return lm ? { icon: lm[1], caption: lm[2].trim() } : { icon: '🖼️', caption: line };
+        });
+      } else {
+        text = text.replace(/\[result screenshot\]\s*$/, '').trim();
+      }
+      parsed.push({ label, text, slides, editing: false, picked: false });
+    });
+    if (parsed.length === 0 && raw.trim()) { parsed.push({ label: "Draft", text: raw.trim(), slides: [], editing: false, picked: false }); }
+    return { title, captions: parsed };
+  }
+
+  async function generateCaptions() {
+    const s = studioState;
+    if (!s.threadsLink.trim() && !s.postContent.trim()) {
+      s.error = "Add the Threads post link or paste the original post caption first.";
+      renderStudio();
+      return;
+    }
+
+    s.loading = true; s.error = ""; s.captions = []; s.title = "";
+    renderStudio();
+
+    const userPrompt = `Threads post reference link: ${s.threadsLink || '(none provided)'}
+Marked hot/trending: ${s.hot ? 'yes' : 'no'}
+
+Raw post content (pasted by editor — treat as primary source if present):
+${s.postContent || '(not pasted — use web search and/or the notes below instead)'}
+
+Editor notes — the internet moment (optional):
+${s.momentNotes || '(none provided)'}
+
+Editor notes — the micro app (optional):
+${s.microAppNotes || '(none provided — check the micro-app log for a match)'}
+
+Micro app tag(s) selected: ${s.microAppTags.length ? s.microAppTags.join(', ') : '(none selected)'}
+
+Draft the caption options now, following the format specified.`;
+
+    try {
+      const headers = { "Content-Type": "application/json" };
+      if (s.apiKey.trim()) {
+        headers["x-api-key"] = s.apiKey.trim();
+        headers["anthropic-version"] = "2023-06-01";
+        headers["anthropic-dangerous-direct-browser-access"] = "true";
+      }
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          model: "claude-sonnet-4-5-20250929",
+          max_tokens: 2000,
+          system: SKILL_SYSTEM_PROMPT,
+          messages: [{ role: "user", content: userPrompt }],
+          tools: [{ type: "web_search_20250305", name: "web_search" }]
+        })
+      });
+      if (!response.ok) {
+        const errText = await response.text().catch(() => "");
+        throw new Error(`API error ${response.status}: ${errText.slice(0, 200)}`);
+      }
+      const data = await response.json();
+      const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text);
+      const raw = textBlocks.join("\n");
+      const { title, captions } = parseCaptionResponse(raw);
+      if (captions.length === 0) throw new Error("Claude didn't return any captions — try again or add more notes.");
+      s.captions = captions;
+      if (title) s.title = title;
+    } catch (err) {
+      s.error = "Couldn't generate captions: " + err.message + ". If this file is open outside Claude, paste your own API key above and try again.";
+    } finally {
+      s.loading = false;
+      renderStudio();
+    }
+  }
 </script>
 </body>
 </html>
