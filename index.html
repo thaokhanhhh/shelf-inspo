@@ -1202,7 +1202,7 @@ SLIDES:
 
   let studioState = {
     threadsLink: "", postContent: "", momentNotes: "", microAppNotes: "",
-    microAppTags: [], hot: false, title: "", showApiKey: false,
+    microAppTags: [], hot: false, momentName: "", showApiKey: false,
     loading: false, error: "", captions: []
   };
 
@@ -1220,7 +1220,7 @@ SLIDES:
       ${picked ? `
         <div class="final-pick">
           <span class="tag">✅ Final pick</span>
-          <h4>${stEscape(s.title || 'Internet Moment')}</h4>
+          <h4>${stEscape(s.momentName || 'Internet Moment')}</h4>
           <div class="meta">${s.hot ? '🔥 Hot' : ''} ${s.hot && s.threadsLink ? '· ' : ''}${s.threadsLink ? `<a href="${stEscapeAttr(s.threadsLink)}" target="_blank" rel="noopener noreferrer" style="color:var(--coral);">source ↗</a>` : ''}</div>
           <div class="cap-text">${stEscape(picked.text)}</div>
           ${picked.slides && picked.slides.length ? `
@@ -1235,6 +1235,10 @@ SLIDES:
         </div>` : ''}
 
       <div class="studio-form">
+        <div class="field">
+          <label>Internet Moment name <span style="font-weight:500;color:var(--muted);">— content pushed under the same name groups into one card on Shelf Radar</span></label>
+          <input type="text" id="s-moment-name" placeholder="e.g. BTS Grammys middle finger, Heartstopper Forever finale..." value="${stEscapeAttr(s.momentName)}">
+        </div>
         <div class="field">
           <label>Threads post reference link</label>
           <input type="text" id="s-link" placeholder="https://www.threads.com/@.../post/..." value="${stEscapeAttr(s.threadsLink)}">
@@ -1308,6 +1312,7 @@ SLIDES:
       </div>`;
 
     const t = id => document.getElementById(id);
+    t('s-moment-name').addEventListener('input', e => studioState.momentName = e.target.value);
     t('s-link').addEventListener('input', e => studioState.threadsLink = e.target.value);
     t('s-post-content').addEventListener('input', e => studioState.postContent = e.target.value);
     t('s-moment-notes').addEventListener('input', e => studioState.momentNotes = e.target.value);
@@ -1350,7 +1355,7 @@ SLIDES:
       time: 'just now',
       caption: picked.text,
       microApp: microApp,
-      trend: s.title || 'Untitled trend',
+      trend: (s.momentName || '').trim() || 'Untitled trend',
       hot: !!s.hot,
       source: s.threadsLink ? {
         url: s.threadsLink,
@@ -1435,7 +1440,7 @@ SLIDES:
       studioState.showApiKey = true;
       renderStudio(); return;
     }
-    s.loading = true; s.error = ""; s.captions = []; s.title = "";
+    s.loading = true; s.error = ""; s.captions = [];
     renderStudio();
 
     const userPrompt = `Threads post reference link: ${s.threadsLink || '(none provided)'}
@@ -1481,7 +1486,8 @@ Draft the captions now, following the format specified.`;
       const { title, captions } = parseCaptionResponse(raw);
       if (captions.length === 0) throw new Error("Claude returned no captions — try again or add more notes.");
       s.captions = captions;
-      if (title) s.title = title;
+      // Only pre-fill the moment name if Emily hasn't typed her own — never overwrite her input.
+      if (title && !s.momentName.trim()) s.momentName = title;
     } catch (err) {
       s.error = "Couldn't generate captions: " + err.message + " — check your API key or your source content.";
     } finally { s.loading = false; renderStudio(); }
