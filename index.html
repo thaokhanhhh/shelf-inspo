@@ -713,7 +713,15 @@
 
 
 <script>
-  const posts = [];
+  const POSTS_STORAGE = 'shelf_radar_posts_v1';
+  function loadStoredPosts() {
+    try { return JSON.parse(localStorage.getItem(POSTS_STORAGE) || '[]'); }
+    catch (e) { return []; }
+  }
+  function saveStoredPosts() {
+    try { localStorage.setItem(POSTS_STORAGE, JSON.stringify(posts)); } catch (e) {}
+  }
+  const posts = loadStoredPosts();
 
   const feed = document.getElementById('feed');
   const countEl = document.getElementById('count');
@@ -872,7 +880,7 @@
     trends.sort((a, b) => (highlightedTrends.has(b.name) ? 1 : 0) - (highlightedTrends.has(a.name) ? 1 : 0));
 
     const cards = trends.map(t => {
-      const hot = highlightedTrends.has(t.name);
+      const hot = highlightedTrends.has(t.name) || t.posts.some(p => p.hot);
       return `
       <div class="trend-card${hot ? ' hot' : ''}" data-trend="${escapeHtml(t.name)}">
         <div class="trend-body">
@@ -1222,7 +1230,7 @@ SLIDES:
             </div>` : ''}
           <div class="final-btns">
             <button class="big-copy" id="bigCopyBtn">Copy caption</button>
-            <button class="submit-radar-btn" id="submitRadarBtn">📱 Copy Shelf Radar block</button>
+            <button class="submit-radar-btn" id="submitRadarBtn">🚀 Push to Shelf Radar</button>
           </div>
         </div>` : ''}
 
@@ -1325,14 +1333,54 @@ SLIDES:
     const bigCopy = t('bigCopyBtn');
     if (bigCopy) bigCopy.addEventListener('click', () => copyText(picked.text, bigCopy, 'Copy caption'));
     const submitBtn = t('submitRadarBtn');
-    if (submitBtn) submitBtn.addEventListener('click', () => copyText(buildRadarBlock(picked), submitBtn, '📱 Copy Shelf Radar block'));
+    if (submitBtn) submitBtn.addEventListener('click', () => pushToRadar(picked, submitBtn));
   }
 
-  function buildRadarBlock(picked) {
+  function extractHandleFromUrl(url) {
+    const m = String(url || '').match(/threads\.(?:net|com)\/@([^\/\?#]+)/i);
+    return m ? '@' + m[1] : null;
+  }
+
+  function buildRadarPost(picked) {
     const s = studioState;
-    const tags = s.microAppTags.length ? s.microAppTags.join(' / ') : 'micro-app TBD';
-    const slides = (picked.slides || []).map((sl, i) => `${i + 1}. ${sl.icon} ${sl.caption}`).join('\n');
-    return `📱 New inspo — ${tags} x ${s.title}\n\nRef: ${s.threadsLink}\n\nCaption:\n${picked.text}\n\nSlides:\n${slides || '(add slide directions)'}`;
+    const microApp = s.microAppTags[0] || 'Other';
+    const sourceHandle = extractHandleFromUrl(s.threadsLink);
+    return {
+      handle: 'emily',
+      time: 'just now',
+      caption: picked.text,
+      microApp: microApp,
+      trend: s.title || 'Untitled trend',
+      hot: !!s.hot,
+      source: s.threadsLink ? {
+        url: s.threadsLink,
+        platform: 'Threads',
+        handle: sourceHandle || 'source',
+        metrics: {}
+      } : null,
+      images: (picked.slides || []).map(sl => ({
+        placeholder: `${sl.icon || '🖼️'} ${sl.caption || ''}`.trim()
+      }))
+    };
+  }
+
+  function pushToRadar(picked, btn) {
+    if (!picked) return;
+    const post = buildRadarPost(picked);
+    posts.unshift(post);           // newest first
+    saveStoredPosts();
+    render();                      // re-render feed
+    // Confirm on the button
+    const original = '🚀 Push to Shelf Radar';
+    btn.textContent = '✓ Pushed to Radar';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+      // Close studio and scroll feed to top so she sees the new post land
+      closeStudio();
+      document.getElementById('feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 1200);
   }
 
   function copyText(text, btn, resetLabel) {
