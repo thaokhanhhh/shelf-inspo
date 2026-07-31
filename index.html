@@ -1112,7 +1112,7 @@
   // ==========================================
   // SHELF-VIRAL-CAPTION SKILL (baked as system prompt)
   // ==========================================
-  const CATS = ["Celeb Soulmate", "Heartstopper Match", "What's In My Bag", "iPod Top Song", "Taste Map"];
+  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "What's In My Bag", "iPod Top Song", "Taste Map"];
 
   const MICRO_APP_LOG = `# Micro-apps log
 
@@ -1158,6 +1158,14 @@ Running log of Shelf micro-apps. Reference this before asking a creator to redes
 - **Platform:** Spotify + Netflix + book library data (credit whichever platform(s) are most relevant to the specific viral post you're riffing on)
 - **Result screen:** Personality portrait / archetype card + a short "why this is you" blurb pulling from the three data sources. Shelf watermark.
 - **Loading screen:** "Reading your taste across music, film, and books…" or similar.
+- **Added:** 2026-07
+
+## Spider-man Taste Match
+
+- **Mechanic:** Reads the user's Spotify + Netflix taste and matches them with the Spider-Man character (Peter Parker, Miles Morales, Gwen Stacy, Miguel O'Hara, etc.) closest to their personality.
+- **Platform:** Spotify + Netflix
+- **Result screen:** Character portrait + "your Spider-Man is [name]" reveal, plus a short blurb on why the taste profile maps to that character. Shelf watermark.
+- **Loading screen:** "Reading your streaming DNA to find your Spider-Man…" or similar.
 - **Added:** 2026-07`;
 
   const SKILL_SYSTEM_PROMPT = `# Shelf Viral Caption Writer
@@ -1203,7 +1211,7 @@ After the exact hook, pivot into the micro-app. Every version of this part, what
 
 The bridge does NOT need to be its own separate sentence — it can be a clause folded into the mechanic sentence ("as someone who's been streaming BTS on repeat, Spotify's new personality quiz just told me..."). What matters is that a first-person "I'm in this moment" beat sits between the exact hook and the mechanic reveal. A caption that jumps straight from the viral quote into "[Platform] just launched a feature that reads..." with no personal beat in between reads like an ad. That's the failure mode this rule prevents.
 
-**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate is about compatibility, so the bridge is "I've been consuming X" and the reveal is "and it matched me with [specific celebrity]." Heartstopper Match is about self-recognition inside a fandom, so the bridge is "I've been watching X" and the reveal is "and it says I'm [specific character]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen.
+**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate is about compatibility, so the bridge is "I've been consuming X" and the reveal is "and it matched me with [specific celebrity]." Heartstopper Match and Spider-man Taste Match are about self-recognition inside a fandom, so the bridge is "I've been watching X" and the reveal is "and it says I'm [specific character]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen.
 
 ## Step 3: No promotional language
 
