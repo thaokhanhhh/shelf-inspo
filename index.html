@@ -32,6 +32,10 @@
     --green: #22B24C;
     --purple: #9B6FE0;
     --purple-soft: #EADFF9;
+    --sky: #6BB0E4;
+    --sky-soft: #D5E8F7;
+    --orange: #F58A2E;
+    --orange-soft: #FFE1C4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -336,6 +340,16 @@
   .tab[data-key="Your Sterling Point Match"].active { background: var(--purple); color: #fff; }
   .tab[data-key="Your Sterling Point Match"].active:hover { background: #8558D0; }
 
+  .tab[data-key="Taylor Swift Album Match"] { background: var(--sky-soft); color: #1D5A8A; }
+  .tab[data-key="Taylor Swift Album Match"]:hover { background: #BFDBF0; }
+  .tab[data-key="Taylor Swift Album Match"].active { background: var(--sky); color: #fff; }
+  .tab[data-key="Taylor Swift Album Match"].active:hover { background: #4E9AD6; }
+
+  .tab[data-key="F1 Soulmate"] { background: var(--orange-soft); color: #8A4A0E; }
+  .tab[data-key="F1 Soulmate"]:hover { background: #FFCC99; }
+  .tab[data-key="F1 Soulmate"].active { background: var(--orange); color: #fff; }
+  .tab[data-key="F1 Soulmate"].active:hover { background: #DB761C; }
+
   .tab[data-key="all"].active { background: var(--ink); color: #fff; }
   .tab[data-key="all"].active:hover { background: #000; }
 
@@ -445,6 +459,8 @@
   .trend-app-chip[data-app="Taste Map"] { background: var(--mint-soft); color: #0E5A2F; }
   .trend-app-chip[data-app="Spider-man Taste Match"] { background: var(--peach-soft); color: #B03A1E; }
   .trend-app-chip[data-app="Your Sterling Point Match"] { background: var(--purple-soft); color: #5B3AA5; }
+  .trend-app-chip[data-app="Taylor Swift Album Match"] { background: var(--sky-soft); color: #1D5A8A; }
+  .trend-app-chip[data-app="F1 Soulmate"] { background: var(--orange-soft); color: #8A4A0E; }
   .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
 
   .trend-chevron { display: none; }
@@ -1126,7 +1142,7 @@
   // ==========================================
   // SHELF-VIRAL-CAPTION SKILL (baked as system prompt)
   // ==========================================
-  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "What's In My Bag", "iPod Top Song", "Taste Map"];
+  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "F1 Soulmate", "What's In My Bag", "iPod Top Song", "Taste Map"];
 
   const MICRO_APP_LOG = `# Micro-apps log
 
@@ -1188,7 +1204,23 @@ Running log of Shelf micro-apps. Reference this before asking a creator to redes
 - **Platform:** Spotify + Netflix
 - **Result screen:** Character portrait + "your Sterling Point match is [name]" reveal, plus a short blurb on why the taste profile maps to that character. Shelf watermark.
 - **Loading screen:** "Reading your streaming DNA to find your Sterling Point match…" or similar.
-- **Added:** 2026-07`;
+- **Added:** 2026-07
+
+## Taylor Swift Album Match
+
+- **Mechanic:** Reads the user's Spotify listening history (top artists, genres, mood signals) and matches them with the Taylor Swift album (Debut, Fearless, Speak Now, Red, 1989, Reputation, Lover, Folklore, Evermore, Midnights, The Tortured Poets Department, etc.) that most matches their personality / taste. Netflix data can also feed in for mood signals when relevant.
+- **Platform:** Spotify (primary) + Netflix (secondary — credit Spotify unless the specific viral post is Netflix-driven)
+- **Result screen:** Album cover art + "your Taylor Swift album is [album name]" reveal, plus a short blurb on why that era matches the user. Shelf watermark.
+- **Loading screen:** "Matching your streaming DNA to a Taylor era…" or similar.
+- **Added:** 2026-07
+
+## F1 Soulmate
+
+- **Mechanic:** Reads the user's Spotify + Netflix taste and matches them with the Formula 1 racer (Lewis Hamilton, Max Verstappen, Charles Leclerc, Lando Norris, George Russell, Oscar Piastri, Carlos Sainz, Fernando Alonso, etc.) whose personality most matches their taste profile. Framed as "Who is your F1 soulmate?"
+- **Platform:** Spotify + Netflix
+- **Result screen:** Driver portrait (racing suit, team colors) + "your F1 soulmate is [driver name]" reveal, plus a short blurb on why the taste profile maps to that driver's personality. Shelf watermark.
+- **Loading screen:** "Reading your streaming DNA to find your F1 soulmate…" or similar.
+- **Added:** 2026-08 (launched for the F1 weekend)`;
 
   const SKILL_SYSTEM_PROMPT = `# Shelf Viral Caption Writer
 
@@ -1233,7 +1265,7 @@ After the exact hook, pivot into the micro-app. Every version of this part, what
 
 The bridge does NOT need to be its own separate sentence — it can be a clause folded into the mechanic sentence ("as someone who's been streaming BTS on repeat, Spotify's new personality quiz just told me..."). What matters is that a first-person "I'm in this moment" beat sits between the exact hook and the mechanic reveal. A caption that jumps straight from the viral quote into "[Platform] just launched a feature that reads..." with no personal beat in between reads like an ad. That's the failure mode this rule prevents.
 
-**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate is about compatibility, so the bridge is "I've been consuming X" and the reveal is "and it matched me with [specific celebrity]." Heartstopper Match, Spider-man Taste Match, and Your Sterling Point Match are all character-recognition inside a fandom, so the bridge is "I've been watching X" and the reveal is "and it says I'm [specific character]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen.
+**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, and Your Sterling Point Match are all character-recognition inside a fandom, so the bridge is "I've been watching X" and the reveal is "and it says I'm [specific character]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl."
 
 ## Step 3: No promotional language
 
