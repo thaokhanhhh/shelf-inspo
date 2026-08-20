@@ -36,6 +36,8 @@
     --sky-soft: #D5E8F7;
     --orange: #F58A2E;
     --orange-soft: #FFE1C4;
+    --teal: #14B8A6;
+    --teal-soft: #C8F0E9;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -350,6 +352,11 @@
   .tab[data-key="F1 Soulmate"].active { background: var(--orange); color: #fff; }
   .tab[data-key="F1 Soulmate"].active:hover { background: #DB761C; }
 
+  .tab[data-key="Anime Match"] { background: var(--teal-soft); color: #0A6B60; }
+  .tab[data-key="Anime Match"]:hover { background: #A8E5DA; }
+  .tab[data-key="Anime Match"].active { background: var(--teal); color: #fff; }
+  .tab[data-key="Anime Match"].active:hover { background: #0E9E8F; }
+
   .tab[data-key="all"].active { background: var(--ink); color: #fff; }
   .tab[data-key="all"].active:hover { background: #000; }
 
@@ -461,6 +468,7 @@
   .trend-app-chip[data-app="Your Sterling Point Match"] { background: var(--purple-soft); color: #5B3AA5; }
   .trend-app-chip[data-app="Taylor Swift Album Match"] { background: var(--sky-soft); color: #1D5A8A; }
   .trend-app-chip[data-app="F1 Soulmate"] { background: var(--orange-soft); color: #8A4A0E; }
+  .trend-app-chip[data-app="Anime Match"] { background: var(--teal-soft); color: #0A6B60; }
   .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
 
   .trend-chevron { display: none; }
@@ -1142,7 +1150,7 @@
   // ==========================================
   // SHELF-VIRAL-CAPTION SKILL (baked as system prompt)
   // ==========================================
-  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "F1 Soulmate", "What's In My Bag", "iPod Top Song", "Taste Map"];
+  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "F1 Soulmate", "Anime Match", "What's In My Bag", "iPod Top Song", "Taste Map"];
 
   const MICRO_APP_LOG = `# Micro-apps log
 
@@ -1220,7 +1228,15 @@ Running log of Shelf micro-apps. Reference this before asking a creator to redes
 - **Platform:** Spotify + Netflix
 - **Result screen:** Driver portrait (racing suit, team colors) + "your F1 soulmate is [driver name]" reveal, plus a short blurb on why the taste profile maps to that driver's personality. Shelf watermark.
 - **Loading screen:** "Reading your streaming DNA to find your F1 soulmate…" or similar.
-- **Added:** 2026-08 (launched for the F1 weekend)`;
+- **Added:** 2026-08 (launched for the F1 weekend)
+
+## Anime Match
+
+- **Mechanic:** Reads the user's Spotify + Netflix taste and matches them with an anime character (Naruto, Sasuke, Levi, Mikasa, Nezuko, Tanjiro, Gojo, Luffy, Zoro, Hinata Shoyo, Yuji, Anya, Kaguya, etc.) whose personality most matches their taste profile. Framed as "Which anime are you?"
+- **Platform:** Spotify + Netflix
+- **Result screen:** Character portrait (anime art style, signature outfit) + "you are [character name]" reveal, plus a short blurb on why the taste profile maps to that character's personality. Shelf watermark.
+- **Loading screen:** "Reading your streaming DNA to find your anime character…" or similar.
+- **Added:** 2026-08`;
 
   const SKILL_SYSTEM_PROMPT = `# Shelf Viral Caption Writer
 
@@ -1265,7 +1281,7 @@ After the exact hook, pivot into the micro-app. Every version of this part, what
 
 The bridge does NOT need to be its own separate sentence — it can be a clause folded into the mechanic sentence ("as someone who's been streaming BTS on repeat, Spotify's new personality quiz just told me..."). What matters is that a first-person "I'm in this moment" beat sits between the exact hook and the mechanic reveal. A caption that jumps straight from the viral quote into "[Platform] just launched a feature that reads..." with no personal beat in between reads like an ad. That's the failure mode this rule prevents.
 
-**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, and Your Sterling Point Match are all character-recognition inside a fandom, so the bridge is "I've been watching X" and the reveal is "and it says I'm [specific character]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl."
+**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, Your Sterling Point Match, and Anime Match are all character-recognition inside a fandom, so the bridge is "I've been watching X (specific show / anime title)" and the reveal is "and it says I'm [specific character like Levi / Nezuko / Gojo]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl."
 
 ## Step 3: No promotional language
 
