@@ -40,6 +40,8 @@
     --teal-soft: #C8F0E9;
     --berry: #C2185B;
     --berry-soft: #F8D7E4;
+    --gold: #C89B3C;
+    --gold-soft: #F0E1B8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -364,6 +366,11 @@
   .tab[data-key="Olivia Lyrics"].active { background: var(--berry); color: #fff; }
   .tab[data-key="Olivia Lyrics"].active:hover { background: #A21550; }
 
+  .tab[data-key="Swifties Era"] { background: var(--gold-soft); color: #6B4A00; }
+  .tab[data-key="Swifties Era"]:hover { background: #E5D19A; }
+  .tab[data-key="Swifties Era"].active { background: var(--gold); color: #fff; }
+  .tab[data-key="Swifties Era"].active:hover { background: #A8802A; }
+
   .tab[data-key="all"].active { background: var(--ink); color: #fff; }
   .tab[data-key="all"].active:hover { background: #000; }
 
@@ -477,6 +484,7 @@
   .trend-app-chip[data-app="F1 Soulmate"] { background: var(--orange-soft); color: #8A4A0E; }
   .trend-app-chip[data-app="Anime Match"] { background: var(--teal-soft); color: #0A6B60; }
   .trend-app-chip[data-app="Olivia Lyrics"] { background: var(--berry-soft); color: #7C1642; }
+  .trend-app-chip[data-app="Swifties Era"] { background: var(--gold-soft); color: #6B4A00; }
   .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
 
   .trend-chevron { display: none; }
@@ -1158,7 +1166,7 @@
   // ==========================================
   // SHELF-VIRAL-CAPTION SKILL (baked as system prompt)
   // ==========================================
-  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "F1 Soulmate", "Anime Match", "Olivia Lyrics", "What's In My Bag", "iPod Top Song", "Taste Map"];
+  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "Swifties Era", "F1 Soulmate", "Anime Match", "Olivia Lyrics", "What's In My Bag", "iPod Top Song", "Taste Map"];
 
   const MICRO_APP_LOG = `# Micro-apps log
 
@@ -1252,7 +1260,15 @@ Running log of Shelf micro-apps. Reference this before asking a creator to redes
 - **Platform:** Spotify
 - **Result screen:** A stylized lyric card featuring the matched line from "Serena Joy" (typography-forward, Olivia-aesthetic — moody / soft-punk depending on the line), plus a short blurb on why that lyric hits for the user. Shelf watermark.
 - **Loading screen:** "Reading your streaming DNA to find your Serena Joy lyric…" or similar.
-- **Added:** 2026-08 (launched for the "Serena Joy" release)`;
+- **Added:** 2026-08 (launched for the "Serena Joy" release)
+
+## Swifties Era
+
+- **Mechanic:** Reads the user's *recent* Spotify listening (last 30 days — mood signals, tempo, genre drift) and tells them which Taylor Swift era they're currently IN (Debut, Fearless, Speak Now, Red, 1989, Reputation, Lover, Folklore, Evermore, Midnights, TTPD). Framed as "Which Taylor Swift era are you in?" — this is a mood/state read, not a permanent identity read (that's Taylor Swift Album Match). Compared to Album Match: Album Match answers "which Taylor album IS you"; Swifties Era answers "which era are you currently living in." Same source data, different framing — the caption should lean into the "right now / this month / this season of my life" angle.
+- **Platform:** Spotify
+- **Result screen:** Era-themed card — matching era's iconic visual language (Reputation snake, Lover pastels, Folklore forest cardigan, Midnights starry indigo, TTPD typewriter, etc.) + "you're in your [Era] era" reveal + short blurb on why the recent listening signaled that era. Shelf watermark.
+- **Loading screen:** "Reading your last 30 days of listening to place you in a Taylor era…" or similar.
+- **Added:** 2026-08`;
 
   const SKILL_SYSTEM_PROMPT = `# Shelf Viral Caption Writer
 
@@ -1297,7 +1313,7 @@ After the exact hook, pivot into the micro-app. Every version of this part, what
 
 The bridge does NOT need to be its own separate sentence — it can be a clause folded into the mechanic sentence ("as someone who's been streaming BTS on repeat, Spotify's new personality quiz just told me..."). What matters is that a first-person "I'm in this moment" beat sits between the exact hook and the mechanic reveal. A caption that jumps straight from the viral quote into "[Platform] just launched a feature that reads..." with no personal beat in between reads like an ad. That's the failure mode this rule prevents.
 
-**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, Your Sterling Point Match, and Anime Match are all character-recognition inside a fandom, so the bridge is "I've been watching X (specific show / anime title)" and the reveal is "and it says I'm [specific character like Levi / Nezuko / Gojo]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl." Olivia Lyrics is a mood-mirror — the bridge is "I've had Serena Joy on repeat since it dropped" or "this song is unwell-coded" and the reveal is "and Spotify just gave me [specific lyric from Serena Joy] as my line."
+**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, Your Sterling Point Match, and Anime Match are all character-recognition inside a fandom, so the bridge is "I've been watching X (specific show / anime title)" and the reveal is "and it says I'm [specific character like Levi / Nezuko / Gojo]." iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity (permanent) — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl." Swifties Era is era-state (right now) — the bridge is "I've been in my [feeling] era lately / this month has been [vibe]" and the reveal is "and Spotify just confirmed I'm in my [specific era like Reputation / Folklore] era rn." The subtle difference: Album Match uses lifetime taste, Swifties Era uses the last 30 days — captions should reflect that recency ("this week," "this season of my life"). Olivia Lyrics is a mood-mirror — the bridge is "I've had Serena Joy on repeat since it dropped" or "this song is unwell-coded" and the reveal is "and Spotify just gave me [specific lyric from Serena Joy] as my line."
 
 ## Step 3: No promotional language
 
