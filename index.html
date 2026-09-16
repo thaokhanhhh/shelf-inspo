@@ -44,6 +44,8 @@
     --gold-soft: #F0E1B8;
     --emerald: #1F5F42;
     --emerald-soft: #C4DFCF;
+    --cobalt: #2547AB;
+    --cobalt-soft: #CBD4EC;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -378,6 +380,11 @@
   .tab[data-key="Harry Potter Match"].active { background: var(--emerald); color: #fff; }
   .tab[data-key="Harry Potter Match"].active:hover { background: #164B33; }
 
+  .tab[data-key="DCU Match"] { background: var(--cobalt-soft); color: #172E7A; }
+  .tab[data-key="DCU Match"]:hover { background: #B0BDDE; }
+  .tab[data-key="DCU Match"].active { background: var(--cobalt); color: #fff; }
+  .tab[data-key="DCU Match"].active:hover { background: #1E3A8A; }
+
   .tab[data-key="all"].active { background: var(--ink); color: #fff; }
   .tab[data-key="all"].active:hover { background: #000; }
 
@@ -493,6 +500,7 @@
   .trend-app-chip[data-app="Olivia Lyrics"] { background: var(--berry-soft); color: #7C1642; }
   .trend-app-chip[data-app="Swifties Era"] { background: var(--gold-soft); color: #6B4A00; }
   .trend-app-chip[data-app="Harry Potter Match"] { background: var(--emerald-soft); color: #0E3A25; }
+  .trend-app-chip[data-app="DCU Match"] { background: var(--cobalt-soft); color: #172E7A; }
   .trend-app-chip[data-app="Other"] { background: var(--line-soft); color: var(--muted); }
 
   .trend-chevron { display: none; }
@@ -1174,7 +1182,7 @@
   // ==========================================
   // SHELF-VIRAL-CAPTION SKILL (baked as system prompt)
   // ==========================================
-  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "Swifties Era", "F1 Soulmate", "Anime Match", "Harry Potter Match", "Olivia Lyrics", "What's In My Bag", "iPod Top Song", "Taste Map"];
+  const CATS = ["Celeb Soulmate", "Heartstopper Match", "Spider-man Taste Match", "Your Sterling Point Match", "Taylor Swift Album Match", "Swifties Era", "F1 Soulmate", "Anime Match", "Harry Potter Match", "DCU Match", "Olivia Lyrics", "What's In My Bag", "iPod Top Song", "Taste Map"];
 
   const MICRO_APP_LOG = `# Micro-apps log
 
@@ -1280,10 +1288,18 @@ Running log of Shelf micro-apps. Reference this before asking a creator to redes
 
 ## Harry Potter Match
 
-- **Mechanic:** Reads the user's Spotify (music), Netflix (movies), and book library (reading history) and matches them with the Harry Potter character (Harry, Hermione, Ron, Draco, Luna, Snape, Sirius, Neville, Ginny, Dumbledore, Bellatrix, Tonks, Cedric, Fred/George, etc.) whose personality most matches their taste profile across all three data sources.
+- **Mechanic:** Sorts the user into one of the four Hogwarts houses — **Gryffindor, Slytherin, Ravenclaw, or Hufflepuff** — based on their Spotify (music), Netflix (movies), and book library (reading history) taste profile. This is a Sorting Hat, not a character match: the reveal is a house, not a person.
 - **Platform:** Spotify + Netflix + book library data (credit whichever platform(s) fit the specific viral post best — often books/Netflix given HP is a books-and-movies universe)
-- **Result screen:** Character portrait (illustrated in HP art style, Hogwarts house colors visible) + "your Harry Potter character is [name]" reveal, plus a short blurb on why the taste profile maps to that character. Shelf watermark.
-- **Loading screen:** "Reading your streaming and reading DNA to find your Harry Potter character…" or similar.
+- **Result screen:** Hogwarts house crest / banner in the matched house's colors (Gryffindor scarlet + gold, Slytherin emerald + silver, Ravenclaw blue + bronze, Hufflepuff yellow + black) + "you belong in [House]" reveal + short blurb on why the taste profile signals that house's traits (brave/reckless, cunning/ambitious, curious/analytical, loyal/warm). Shelf watermark.
+- **Loading screen:** "The Sorting Hat is reading your streaming and reading DNA…" or similar.
+- **Added:** 2026-08
+
+## DCU Match
+
+- **Mechanic:** Reads the user's Spotify + Netflix taste and matches them with a DC Universe character (Batman, Superman, Wonder Woman, Joker, Harley Quinn, Aquaman, Flash, Green Lantern, Robin, Nightwing, Catwoman, Poison Ivy, Zatanna, Constantine, Cyborg, Raven, Starfire, John Constantine, Black Canary, etc.) whose personality most matches their taste profile. Framed as "Who are you in DCU?"
+- **Platform:** Spotify + Netflix
+- **Result screen:** Character portrait (comic art style, in-costume with the character's signature palette — Batman blacks + yellow, Superman blue + red, Wonder Woman red + gold, Harley pink + blue, etc.) + "you are [character name]" reveal + short blurb on why the taste profile maps to that character's personality. Shelf watermark.
+- **Loading screen:** "Reading your streaming DNA to find your DCU character…" or similar.
 - **Added:** 2026-08`;
 
   const SKILL_SYSTEM_PROMPT = `# Shelf Viral Caption Writer
@@ -1329,7 +1345,7 @@ After the exact hook, pivot into the micro-app. Every version of this part, what
 
 The bridge does NOT need to be its own separate sentence — it can be a clause folded into the mechanic sentence ("as someone who's been streaming BTS on repeat, Spotify's new personality quiz just told me..."). What matters is that a first-person "I'm in this moment" beat sits between the exact hook and the mechanic reveal. A caption that jumps straight from the viral quote into "[Platform] just launched a feature that reads..." with no personal beat in between reads like an ad. That's the failure mode this rule prevents.
 
-**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, Your Sterling Point Match, Anime Match, and Harry Potter Match are all character-recognition inside a fandom, so the bridge is "I've been watching X / rereading Y" and the reveal is "and it says I'm [specific character like Levi / Nezuko / Gojo / Luna Lovegood / Draco]." For Harry Potter Match specifically, the bridge can also lean into reading identity ("I've been rereading the books since I was 12" or "just did a full HP movie marathon") since the mechanic pulls from Netflix + books, not just music. iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity (permanent) — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl." Swifties Era is era-state (right now) — the bridge is "I've been in my [feeling] era lately / this month has been [vibe]" and the reveal is "and Spotify just confirmed I'm in my [specific era like Reputation / Folklore] era rn." The subtle difference: Album Match uses lifetime taste, Swifties Era uses the last 30 days — captions should reflect that recency ("this week," "this season of my life"). Olivia Lyrics is a mood-mirror — the bridge is "I've had Serena Joy on repeat since it dropped" or "this song is unwell-coded" and the reveal is "and Spotify just gave me [specific lyric from Serena Joy] as my line."
+**Understand the essence of the chosen micro-app before writing the bridge.** The bridge's phrasing depends on what the micro-app actually does: Taste Map is about identity ("you are this archetype"), so the bridge is "I'm the kind of person who...", and the reveal is "and here's what that makes me." Celeb Soulmate and F1 Soulmate are about compatibility — the bridge is "I've been consuming X (or "watching every race this season")" and the reveal is "and it matched me with [specific celebrity / specific driver like Charles Leclerc]." Heartstopper Match, Spider-man Taste Match, Your Sterling Point Match, Anime Match, and DCU Match are all character-recognition inside a fandom, so the bridge is "I've been watching X / rereading Y / on a full [franchise] rewatch" and the reveal is "and it says I'm [specific character like Levi / Nezuko / Gojo / Harley Quinn / Nightwing]." For DCU Match specifically, the caption can lean into the character's iconic trait as the punchline (Harley chaos, Batman brooding, Wonder Woman moral clarity, Joker unhinged, etc.). Harry Potter Match is different — it's a Sorting Hat, not a character match: bridge is "I've been rereading the books since I was 12" or "just did a full HP movie marathon" and the reveal is "and it sorted me into [Gryffindor / Slytherin / Ravenclaw / Hufflepuff]." The caption should name the specific house in Part 2, and can lean into that house's stereotype (Slytherin ambition, Ravenclaw curiosity, Gryffindor recklessness, Hufflepuff warmth) as the punchline. iPod Top Song is about listening habits, so the bridge is a listening-related identity ("this song is on repeat for me lately") and the reveal is the iPod-styled screen. Taylor Swift Album Match is era-identity (permanent) — the bridge is "I've been listening to X on repeat / I'm always in my [era] era" and the reveal is "and Spotify just told me I'm actually a [specific album] girl." Swifties Era is era-state (right now) — the bridge is "I've been in my [feeling] era lately / this month has been [vibe]" and the reveal is "and Spotify just confirmed I'm in my [specific era like Reputation / Folklore] era rn." The subtle difference: Album Match uses lifetime taste, Swifties Era uses the last 30 days — captions should reflect that recency ("this week," "this season of my life"). Olivia Lyrics is a mood-mirror — the bridge is "I've had Serena Joy on repeat since it dropped" or "this song is unwell-coded" and the reveal is "and Spotify just gave me [specific lyric from Serena Joy] as my line."
 
 ## Step 3: No promotional language
 
